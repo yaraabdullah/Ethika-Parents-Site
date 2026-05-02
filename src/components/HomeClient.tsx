@@ -1,10 +1,30 @@
 "use client";
 
 import { useTranslations } from "next-intl";
-import { useState, useEffect, useMemo } from "react";
+import { useState, useEffect, useMemo, type ComponentType } from "react";
 import { getStats } from "@/data/stats";
 import { TOOLS, toolLabel } from "@/data/tools";
 import { ACTIVITIES } from "@/data/activities";
+import {
+  ChildFace10_13,
+  ChildFace14_16,
+  ChildFace3_5,
+  ChildFace6_9,
+} from "@/components/ChildAgeFaceIcons";
+import {
+  StarIcon,
+  SunIcon,
+  MoonIcon,
+  CloudIcon,
+  HeartIcon,
+  LightningIcon,
+  LeafIcon,
+  FlameIcon,
+  DiamondIcon,
+  WaveIcon,
+  MountainIcon,
+  SnowflakeIcon,
+} from "@/components/AvatarIcons";
 
 /* ── IBM Carbon Design System icons ── */
 import {
@@ -17,8 +37,8 @@ import {
   Explore,
   Caution,
   PedestrianFamily,
-  Scales,
   Book,
+  Scales,
   SkillLevelBasic,
   SkillLevelIntermediate,
   SkillLevelAdvanced,
@@ -38,11 +58,11 @@ import {
   Education,
   Blog,
   CheckmarkFilled,
-  Phone,
-  Globe,
 } from "@carbon/icons-react";
 
 type Props = { locale: string };
+
+type IconComp = ComponentType<{ size?: number; className?: string }>;
 
 /* ── Questionnaire definitions ── */
 type UserProfile = {
@@ -56,20 +76,118 @@ type UserProfile = {
   completedAt: string;
 };
 
-const AVATARS = [
-  { emoji: "\u{1F333}", label: "Tree" },
-  { emoji: "\u{1F989}", label: "Owl" },
-  { emoji: "\u{1F33B}", label: "Sunflower" },
-  { emoji: "\u{1F98B}", label: "Butterfly" },
-  { emoji: "\u{1F41D}", label: "Bee" },
-  { emoji: "\u{1F319}", label: "Moon" },
-  { emoji: "\u{1F422}", label: "Turtle" },
-  { emoji: "\u{1F98A}", label: "Fox" },
-  { emoji: "\u{1F30A}", label: "Wave" },
-  { emoji: "\u{1F3A8}", label: "Palette" },
-  { emoji: "\u{1F9E9}", label: "Puzzle" },
-  { emoji: "\u{1F3D4}\u{FE0F}", label: "Mountain" },
+/**
+ * Parent avatars — mockup style: **white glyphs on solid color disks** (Options A + B + D),
+ * no monogram initials. Row A = geometry, B = silhouettes, D = same abstract mark × 4 colors.
+ */
+type AvatarOption = {
+  id: string;
+  Icon: IconComp;
+  label: string;
+  circle: string;
+  iconTone: string;
+  shortEn: string;
+  shortAr: string;
+};
+
+const AVATAR_OPTIONS: AvatarOption[] = [
+  { id: "star",      Icon: StarIcon,      label: "Star",      circle: "bg-amber-100",  iconTone: "", shortEn: "Star",     shortAr: "نجمة"   },
+  { id: "sun",       Icon: SunIcon,       label: "Sun",       circle: "bg-yellow-100", iconTone: "", shortEn: "Sun",      shortAr: "شمس"    },
+  { id: "moon",      Icon: MoonIcon,      label: "Moon",      circle: "bg-violet-100", iconTone: "", shortEn: "Moon",     shortAr: "قمر"    },
+  { id: "cloud",     Icon: CloudIcon,     label: "Cloud",     circle: "bg-sky-100",    iconTone: "", shortEn: "Cloud",    shortAr: "سحابة"  },
+  { id: "heart",     Icon: HeartIcon,     label: "Heart",     circle: "bg-rose-100",   iconTone: "", shortEn: "Heart",    shortAr: "قلب"    },
+  { id: "lightning", Icon: LightningIcon, label: "Lightning", circle: "bg-yellow-100", iconTone: "", shortEn: "Bolt",     shortAr: "برق"    },
+  { id: "leaf",      Icon: LeafIcon,      label: "Leaf",      circle: "bg-green-100",  iconTone: "", shortEn: "Leaf",     shortAr: "ورقة"   },
+  { id: "flame",     Icon: FlameIcon,     label: "Flame",     circle: "bg-orange-100", iconTone: "", shortEn: "Flame",    shortAr: "شعلة"   },
+  { id: "diamond",   Icon: DiamondIcon,   label: "Diamond",   circle: "bg-blue-100",   iconTone: "", shortEn: "Diamond",  shortAr: "ماسة"   },
+  { id: "wave",      Icon: WaveIcon,      label: "Wave",      circle: "bg-teal-100",   iconTone: "", shortEn: "Wave",     shortAr: "موجة"   },
+  { id: "mountain",  Icon: MountainIcon,  label: "Mountain",  circle: "bg-slate-100",  iconTone: "", shortEn: "Mountain", shortAr: "جبل"    },
+  { id: "snowflake", Icon: SnowflakeIcon, label: "Snowflake", circle: "bg-sky-100",    iconTone: "", shortEn: "Snow",     shortAr: "ثلجة"   },
 ];
+
+function avatarChipStyles(avatarId: string): Pick<AvatarOption, "circle" | "iconTone"> {
+  const row = AVATAR_OPTIONS.find((a) => a.id === avatarId);
+  return row
+    ? { circle: row.circle, iconTone: row.iconTone }
+    : { circle: "bg-rose-100", iconTone: "" };
+}
+
+/** Maps any previously stored avatar id onto the current icon set. */
+const AVATAR_LEGACY_IDS: Record<string, string> = {
+  // current ids — identity map
+  star: "star", sun: "sun", moon: "moon", cloud: "cloud",
+  heart: "heart", lightning: "lightning", leaf: "leaf", flame: "flame",
+  diamond: "diamond", wave: "wave", mountain: "mountain", snowflake: "snowflake",
+  // old nature icon ids
+  tree: "leaf",
+  owl: "moon",
+  sunflower: "sun",
+  butterfly: "heart",
+  bee: "lightning",
+  turtle: "wave",
+  fox: "mountain",
+  palette: "star",
+  puzzle: "diamond",
+  // old Carbon / KeyholePersonGlyph IDs
+  geo_ring: "mountain",
+  geo_square: "diamond",
+  geo_triangle: "wave",
+  geo_star: "star",
+  sil_avatar: "moon",
+  sil_card: "leaf",
+  sil_pair: "wave",
+  sil_family: "heart",
+  tone_green: "leaf",
+  tone_blue: "wave",
+  tone_rose: "heart",
+  tone_amber: "flame",
+  // misc legacy names
+  family: "heart",
+  home: "leaf",
+  care: "heart",
+  protect: "moon",
+  guide: "mountain",
+  household: "wave",
+  routine: "diamond",
+  partner: "wave",
+  connect: "cloud",
+  account: "moon",
+  profile: "star",
+  member: "heart",
+  classic: "moon",
+  solid: "wave",
+  portrait: "star",
+  calm: "moon",
+  kids: "heart",
+  circle: "moon",
+  team: "wave",
+  warm: "flame",
+  cool: "snowflake",
+  playful: "star",
+  stories: "cloud",
+  sunny: "sun",
+  renew: "leaf",
+  steady: "mountain",
+  clever: "diamond",
+  creative: "star",
+  fitting: "diamond",
+  peak: "mountain",
+  spark: "lightning",
+  music: "wave",
+  reading: "cloud",
+  safety: "leaf",
+  digital: "lightning",
+  talk: "cloud",
+  growth: "leaf",
+  school: "star",
+  sprout: "leaf",
+};
+
+function resolveAvatarId(stored: string): string {
+  const id = AVATAR_LEGACY_IDS[stored] ?? stored;
+  if (AVATAR_OPTIONS.some((a) => a.id === id)) return id;
+  return "star";
+}
 
 /* Carbon icon components mapped to concern keys */
 const CONCERN_ICONS: Record<string, React.ComponentType<{ size?: number; className?: string }>> = {
@@ -107,6 +225,16 @@ const INTEREST_OPTIONS = [
 
 const AGE_BANDS = ["3_5", "6_9", "10_13", "14_16"] as const;
 
+/**
+ * Age bands → matching illustrated child busts (shared Ethika green sweater; milestones: pacifier → gap tooth → braces → headphones).
+ */
+const AGE_ICONS: Record<(typeof AGE_BANDS)[number], IconComp> = {
+  "3_5": ChildFace3_5,
+  "6_9": ChildFace6_9,
+  "10_13": ChildFace10_13,
+  "14_16": ChildFace14_16,
+};
+
 export default function HomeClient({ locale }: Props) {
   const t = useTranslations("home");
   const tq = useTranslations("questionnaire");
@@ -136,7 +264,7 @@ export default function HomeClient({ locale }: Props) {
         setSelectedConcerns(p.concerns);
         setSelectedInterests(p.interests);
         setSelectedExperience(p.experience);
-        setSelectedAvatar(p.avatar);
+        setSelectedAvatar(resolveAvatarId(p.avatar));
         setDisplayName(p.name);
       } catch { /* ignore */ }
     } else {
@@ -151,7 +279,7 @@ export default function HomeClient({ locale }: Props) {
     const id = generateId();
     const p: UserProfile = {
       id,
-      avatar: selectedAvatar || "\u{1F333}",
+      avatar: selectedAvatar || "sil_family",
       name: displayName || id,
       childAges: selectedAges,
       concerns: selectedConcerns,
@@ -281,13 +409,25 @@ export default function HomeClient({ locale }: Props) {
                 <p className="text-sm text-neutral-500 mb-5">
                   {isAr ? "للخصوصية الكاملة — لا حاجة لاسمك الحقيقي." : "Full privacy — no real name needed."}
                 </p>
-                <div className="grid grid-cols-4 gap-2.5 mb-5">
-                  {AVATARS.map((a) => (
-                    <button key={a.emoji} onClick={() => setSelectedAvatar(a.emoji)}
-                      className={`text-3xl p-3 rounded-2xl border-2 transition-all
-                        ${selectedAvatar === a.emoji ? "border-ethika-green bg-ethika-green-50 scale-105 shadow-sm" : "border-neutral-200 hover:border-ethika-green-light hover:bg-neutral-50"}`}
-                      aria-label={a.label}>
-                      {a.emoji}
+                <div className="grid grid-cols-3 sm:grid-cols-4 gap-3 mb-5">
+                  {AVATAR_OPTIONS.map(({ id, Icon, label, circle, iconTone, shortEn, shortAr }) => (
+                    <button
+                      key={id}
+                      type="button"
+                      onClick={() => setSelectedAvatar(id)}
+                      className={`flex flex-col items-center gap-2 rounded-2xl border bg-white px-2 py-3 shadow-sm transition-all
+                        ${selectedAvatar === id
+                          ? "border-ethika-green ring-2 ring-ethika-green/25 shadow-md"
+                          : "border-neutral-200 hover:border-neutral-300 hover:bg-neutral-50"
+                        }`}
+                      aria-label={label}
+                    >
+                      <span className={`flex h-14 w-14 shrink-0 items-center justify-center rounded-full ${circle}`}>
+                        <Icon size={32} className={`shrink-0 ${iconTone}`} />
+                      </span>
+                      <span className="text-[11px] sm:text-xs font-semibold text-neutral-700 text-center leading-snug tracking-tight">
+                        {isAr ? shortAr : shortEn}
+                      </span>
                     </button>
                   ))}
                 </div>
@@ -328,8 +468,11 @@ export default function HomeClient({ locale }: Props) {
                           ? "border-ethika-green bg-ethika-green-50 shadow-sm"
                           : "border-neutral-200 hover:border-neutral-300 bg-white"
                         }`}>
-                      <span className="text-2xl block mb-1">
-                        {age === "3_5" ? "\u{1F476}" : age === "6_9" ? "\u{1F9D2}" : age === "10_13" ? "\u{1F9D1}" : "\u{1F9D1}\u200D\u{1F4BB}"}
+                      <span className="flex justify-center mb-1">
+                        {(() => {
+                          const AgeIcon = AGE_ICONS[age];
+                          return <AgeIcon size={52} className="shrink-0" />;
+                        })()}
                       </span>
                       <span className={`text-sm font-semibold ${selectedAges.includes(age) ? "text-ethika-green-dark" : "text-neutral-700"}`}>
                         {t(`age_${age}`)}
@@ -474,6 +617,12 @@ export default function HomeClient({ locale }: Props) {
     ? (isAr ? `مرحباً ${profile.name}` : `Welcome back, ${profile.name}`)
     : (isAr ? "مرحباً بك في إثيكا" : "Welcome to Ethika");
 
+  const resolvedAvatarId = profile ? resolveAvatarId(profile.avatar) : "sil_family";
+  const avatarChip = avatarChipStyles(resolvedAvatarId);
+  const AvatarIconDisplay = profile
+    ? AVATAR_OPTIONS.find((a) => a.id === resolvedAvatarId)?.Icon ?? PedestrianFamily
+    : PedestrianFamily;
+
   return (
     <div className="animate-fade-in">
       {/* ──── TOP: Resource Overview Bar (immediately visible) ──── */}
@@ -482,7 +631,13 @@ export default function HomeClient({ locale }: Props) {
           {/* User greeting row */}
           <div className="flex items-center justify-between mb-5">
             <div className="flex items-center gap-3">
-              {profile && <span className="text-3xl">{profile.avatar}</span>}
+              {profile && (
+                <span
+                  className={`inline-flex h-12 w-12 shrink-0 items-center justify-center rounded-full ${avatarChip.circle}`}
+                >
+                  <AvatarIconDisplay size={26} className={avatarChip.iconTone} />
+                </span>
+              )}
               <div>
                 <h1 className="text-2xl sm:text-3xl font-bold text-neutral-900">{greeting}</h1>
                 <p className="text-base text-neutral-500 mt-0.5">
