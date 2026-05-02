@@ -4,7 +4,7 @@ type P = { size?: number; className?: string };
 
 /** 3–5 Toddler — bald round head, wide chubby body */
 export function ChildFace3_5({ size = 64, className }: P) {
-  const bg = "#CCF2E6"; const fig = "#1C7A52";
+  const bg = "#FEF3C7"; const fig = "#D97706"; // amber — matches StarIcon / LightningIcon
   return (
     <svg width={size} height={size} viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden className={className}>
       <circle cx="32" cy="32" r="28" fill={bg} />
@@ -21,7 +21,7 @@ export function ChildFace3_5({ size = 64, className }: P) {
 
 /** 6–9 Child — round head, small hair bump, medium shoulders */
 export function ChildFace6_9({ size = 64, className }: P) {
-  const bg = "#E2DAFC"; const fig = "#3B30A8";
+  const bg = "#CCFBF1"; const fig = "#0D9488"; // teal — matches WaveIcon
   return (
     <svg width={size} height={size} viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden className={className}>
       <circle cx="32" cy="32" r="28" fill={bg} />
@@ -40,7 +40,7 @@ export function ChildFace6_9({ size = 64, className }: P) {
 
 /** 10–13 Preteen — slightly taller, wider hair, broader shoulders */
 export function ChildFace10_13({ size = 64, className }: P) {
-  const bg = "#FAF0D0"; const fig = "#7A4E10";
+  const bg = "#EDE9FE"; const fig = "#7C3AED"; // violet — matches MoonIcon
   return (
     <svg width={size} height={size} viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden className={className}>
       <circle cx="32" cy="32" r="28" fill={bg} />
@@ -59,7 +59,7 @@ export function ChildFace10_13({ size = 64, className }: P) {
 
 /** 14–16 Teen — taller head, fullest hair, widest shoulders */
 export function ChildFace14_16({ size = 64, className }: P) {
-  const bg = "#FADAD4"; const fig = "#962E1E";
+  const bg = "#FFE4E6"; const fig = "#E11D48"; // rose — matches HeartIcon
   return (
     <svg width={size} height={size} viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden className={className}>
       <circle cx="32" cy="32" r="28" fill={bg} />
