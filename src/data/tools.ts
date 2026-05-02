@@ -2,7 +2,7 @@ import { KNOWLEDGE_HUB_EXTRA_TOOLS } from "./knowledgeHubExtras";
 
 export type Tool = {
   id: string;
-  name: string;
+  name: { en: string; ar: string };
   category: "creation" | "learning" | "coding" | "safety" | "general";
   ageMin: number;
   ageMax: number;
@@ -16,10 +16,15 @@ export type Tool = {
   tags: string[];
 };
 
+/** Display title for the active locale (Knowledge Hub, home, etc.). */
+export function toolLabel(tool: Tool, locale: string): string {
+  return locale === "ar" ? tool.name.ar : tool.name.en;
+}
+
 export const TOOLS: Tool[] = [
   {
     id: "scratch",
-    name: "Scratch",
+    name: { en: "Scratch", ar: "سكراتش" },
     category: "coding",
     ageMin: 6,
     ageMax: 13,
@@ -40,7 +45,7 @@ export const TOOLS: Tool[] = [
   },
   {
     id: "quick-draw",
-    name: "Google Quick, Draw!",
+    name: { en: "Google Quick, Draw!", ar: "Google Quick, Draw! — تخمين الرسومات" },
     category: "learning",
     ageMin: 5,
     ageMax: 10,
@@ -61,7 +66,7 @@ export const TOOLS: Tool[] = [
   },
   {
     id: "teachable-machine",
-    name: "Teachable Machine",
+    name: { en: "Teachable Machine", ar: "Teachable Machine — تدريب نموذج بسيط" },
     category: "learning",
     ageMin: 6,
     ageMax: 16,
@@ -82,7 +87,7 @@ export const TOOLS: Tool[] = [
   },
   {
     id: "khanmigo",
-    name: "Khanmigo (Khan Academy)",
+    name: { en: "Khanmigo (Khan Academy)", ar: "كانميغو (أكاديمية خان)" },
     category: "learning",
     ageMin: 10,
     ageMax: 16,
@@ -103,7 +108,7 @@ export const TOOLS: Tool[] = [
   },
   {
     id: "chatgpt",
-    name: "ChatGPT",
+    name: { en: "ChatGPT", ar: "ChatGPT" },
     category: "general",
     ageMin: 13,
     ageMax: 16,
@@ -124,7 +129,7 @@ export const TOOLS: Tool[] = [
   },
   {
     id: "app-inventor",
-    name: "MIT App Inventor",
+    name: { en: "MIT App Inventor", ar: "MIT App Inventor — بناء تطبيقات" },
     category: "coding",
     ageMin: 10,
     ageMax: 16,
@@ -145,7 +150,7 @@ export const TOOLS: Tool[] = [
   },
   {
     id: "day-of-ai",
-    name: "Day of AI (MIT)",
+    name: { en: "Day of AI (MIT)", ar: "يوم الذكاء الاصطناعي (MIT)" },
     category: "learning",
     ageMin: 6,
     ageMax: 16,

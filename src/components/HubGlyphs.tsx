@@ -66,7 +66,7 @@ function keywordIcon(hay: string): CarbonIcon | null {
 export function resolveToolIcon(tool: Tool): CarbonIcon {
   const fromCore = CORE_TOOL_ICONS[tool.id];
   if (fromCore) return fromCore;
-  const hay = `${tool.id} ${tool.name} ${(tool.tags ?? []).join(" ")}`;
+  const hay = `${tool.id} ${tool.name.en} ${tool.name.ar} ${(tool.tags ?? []).join(" ")}`;
   const kw = keywordIcon(hay);
   if (kw) return kw;
   switch (tool.category) {

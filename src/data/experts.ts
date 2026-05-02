@@ -135,7 +135,7 @@ export const EXPERTS: Expert[] = [
 
 export type Organization = {
   id: string;
-  name: string;
+  name: { en: string; ar: string };
   focusArea: string;
   focus: { en: string; ar: string };
   link: string;
@@ -145,6 +145,11 @@ export type Organization = {
   locales?: ("en" | "ar")[];
 };
 
+/** Display name for Organizations tab cards. */
+export function organizationLabel(org: Organization, locale: string): string {
+  return locale === "ar" ? org.name.ar : org.name.en;
+}
+
 /** Hub / stats: hide org rows that are not meant for the active locale. */
 export function organizationMatchesLocale(org: Organization, locale: string): boolean {
   if (!org.locales?.length) return true;
@@ -153,20 +158,20 @@ export function organizationMatchesLocale(org: Organization, locale: string): bo
 }
 
 export const ORGANIZATIONS: Organization[] = [
-  { id: "unicef", name: "UNICEF Policy Guidance on AI for Children", focusArea: "ai-ethics", focus: { en: "Child rights framework for AI policy", ar: "إطار حقوق الطفل لسياسة الذكاء الاصطناعي" }, link: "https://www.unicef.org/globalinsight/featured-projects/ai-children", hasLink: true, region: "international" },
-  { id: "common-sense", name: "Common Sense Media", focusArea: "digital-parenting", focus: { en: "Age-based media reviews and digital citizenship", ar: "مراجعات الوسائط حسب العمر والمواطنة الرقمية" }, link: "https://www.commonsensemedia.org", hasLink: true, region: "international" },
-  { id: "mit-raise", name: "MIT RAISE", focusArea: "ai-literacy", focus: { en: "AI literacy education and Day of AI initiative", ar: "تعليم محو أمية الذكاء الاصطناعي ومبادرة يوم الذكاء الاصطناعي" }, link: "https://raise.mit.edu", hasLink: true, region: "academic" },
-  { id: "ai-pedagogy", name: "AI Pedagogy Project (Harvard metaLAB)", focusArea: "ai-literacy", focus: { en: "Teaching strategies for AI in education", ar: "استراتيجيات التدريس للذكاء الاصطناعي في التعليم" }, link: "https://aipedagogy.org", hasLink: true, region: "academic" },
-  { id: "craft", name: "CRAFT AI Literacy (Stanford)", focusArea: "ai-literacy", focus: { en: "Research-based AI literacy curriculum", ar: "منهج محو أمية الذكاء الاصطناعي القائم على البحث" }, link: "#", hasLink: false, region: "academic" },
-  { id: "day-of-ai-org", name: "Day of AI (MIT)", focusArea: "ai-literacy", focus: { en: "Free AI curriculum for K-12 students", ar: "منهج مجاني للذكاء الاصطناعي لطلاب المدارس" }, link: "https://dayofai.org", hasLink: true, region: "academic" },
-  { id: "app-inventor-org", name: "MIT App Inventor", focusArea: "ai-literacy", focus: { en: "Block-based programming with AI integration", ar: "برمجة بالكتل مع دمج الذكاء الاصطناعي" }, link: "https://appinventor.mit.edu", hasLink: true, region: "academic" },
-  { id: "ai4k12", name: "AI4K12", focusArea: "ai-literacy", focus: { en: "National guidelines for AI education", ar: "إرشادات وطنية لتعليم الذكاء الاصطناعي" }, link: "https://ai4k12.org", hasLink: true, region: "academic" },
-  { id: "stanford-al", name: "Stanford Accelerator for Learning", focusArea: "ai-literacy", focus: { en: "Research on AI and human learning", ar: "أبحاث عن الذكاء الاصطناعي والتعلم البشري" }, link: "#", hasLink: false, region: "academic" },
-  { id: "experiential-ai", name: "Institute for Experiential AI (Northeastern)", focusArea: "ai-ethics", focus: { en: "Responsible AI research and policy", ar: "أبحاث وسياسات الذكاء الاصطناعي المسؤول" }, link: "#", hasLink: false, region: "academic" },
-  { id: "sdaia-youth", name: "SDAIA Youth Programs", focusArea: "ai-literacy", focus: { en: "Saudi national AI development programs for youth", ar: "برامج سدايا الوطنية لتطوير الذكاء الاصطناعي للشباب" }, link: "https://sdaia.gov.sa", hasLink: true, region: "saudi" },
-  { id: "tuwaiq", name: "Tuwaiq Academy", focusArea: "ai-literacy", focus: { en: "Tech bootcamps and training for Saudi youth", ar: "معسكرات تدريب تقنية للشباب السعودي" }, link: "https://tuwaiq.edu.sa", hasLink: true, region: "saudi" },
-  { id: "allam", name: "ALLaM (Saudi LLM)", focusArea: "ai-literacy", focus: { en: "Saudi Arabia's Arabic-first large language model", ar: "نموذج اللغة الكبير السعودي بالعربية أولاً" }, link: "#", hasLink: false, region: "saudi" },
-  { id: "humain", name: "HUMAIN", focusArea: "ai-ethics", focus: { en: "Saudi company advancing AI and data infrastructure", ar: "شركة سعودية تطور البنية التحتية للذكاء الاصطناعي والبيانات" }, link: "#", hasLink: false, region: "saudi" },
+  { id: "unicef", name: { en: "UNICEF Policy Guidance on AI for Children", ar: "اليونيسف — إرشادات سياسات الذكاء الاصطناعي والأطفال" }, focusArea: "ai-ethics", focus: { en: "Child rights framework for AI policy", ar: "إطار حقوق الطفل لسياسة الذكاء الاصطناعي" }, link: "https://www.unicef.org/globalinsight/featured-projects/ai-children", hasLink: true, region: "international" },
+  { id: "common-sense", name: { en: "Common Sense Media", ar: "كومن سينس ميديا" }, focusArea: "digital-parenting", focus: { en: "Age-based media reviews and digital citizenship", ar: "مراجعات الوسائط حسب العمر والمواطنة الرقمية" }, link: "https://www.commonsensemedia.org", hasLink: true, region: "international" },
+  { id: "mit-raise", name: { en: "MIT RAISE", ar: "مشروع MIT RAISE" }, focusArea: "ai-literacy", focus: { en: "AI literacy education and Day of AI initiative", ar: "تعليم محو أمية الذكاء الاصطناعي ومبادرة يوم الذكاء الاصطناعي" }, link: "https://raise.mit.edu", hasLink: true, region: "academic" },
+  { id: "ai-pedagogy", name: { en: "AI Pedagogy Project (Harvard metaLAB)", ar: "مشروع أصول تدريس الذكاء الاصطناعي (هارفارد)" }, focusArea: "ai-literacy", focus: { en: "Teaching strategies for AI in education", ar: "استراتيجيات التدريس للذكاء الاصطناعي في التعليم" }, link: "https://aipedagogy.org", hasLink: true, region: "academic" },
+  { id: "craft", name: { en: "CRAFT AI Literacy (Stanford)", ar: "CRAFT لمحو أمية الذكاء الاصطناعي (ستانفورد)" }, focusArea: "ai-literacy", focus: { en: "Research-based AI literacy curriculum", ar: "منهج محو أمية الذكاء الاصطناعي القائم على البحث" }, link: "#", hasLink: false, region: "academic" },
+  { id: "day-of-ai-org", name: { en: "Day of AI (MIT)", ar: "يوم الذكاء الاصطناعي (MIT)" }, focusArea: "ai-literacy", focus: { en: "Free AI curriculum for K-12 students", ar: "منهج مجاني للذكاء الاصطناعي لطلاب المدارس" }, link: "https://dayofai.org", hasLink: true, region: "academic" },
+  { id: "app-inventor-org", name: { en: "MIT App Inventor", ar: "MIT App Inventor" }, focusArea: "ai-literacy", focus: { en: "Block-based programming with AI integration", ar: "برمجة بالكتل مع دمج الذكاء الاصطناعي" }, link: "https://appinventor.mit.edu", hasLink: true, region: "academic" },
+  { id: "ai4k12", name: { en: "AI4K12", ar: "AI4K12 — إرشادات تعليم الذكاء الاصطناعي" }, focusArea: "ai-literacy", focus: { en: "National guidelines for AI education", ar: "إرشادات وطنية لتعليم الذكاء الاصطناعي" }, link: "https://ai4k12.org", hasLink: true, region: "academic" },
+  { id: "stanford-al", name: { en: "Stanford Accelerator for Learning", ar: "مسرّع ستانفورد للتعلّم" }, focusArea: "ai-literacy", focus: { en: "Research on AI and human learning", ar: "أبحاث عن الذكاء الاصطناعي والتعلم البشري" }, link: "#", hasLink: false, region: "academic" },
+  { id: "experiential-ai", name: { en: "Institute for Experiential AI (Northeastern)", ar: "معهد الذكاء الاصطناعي التجريبي (نورث إيسترن)" }, focusArea: "ai-ethics", focus: { en: "Responsible AI research and policy", ar: "أبحاث وسياسات الذكاء الاصطناعي المسؤول" }, link: "#", hasLink: false, region: "academic" },
+  { id: "sdaia-youth", name: { en: "SDAIA Youth Programs", ar: "برامج سدايا للشباب" }, focusArea: "ai-literacy", focus: { en: "Saudi national AI development programs for youth", ar: "برامج سدايا الوطنية لتطوير الذكاء الاصطناعي للشباب" }, link: "https://sdaia.gov.sa", hasLink: true, region: "saudi" },
+  { id: "tuwaiq", name: { en: "Tuwaiq Academy", ar: "أكاديمية طويق" }, focusArea: "ai-literacy", focus: { en: "Tech bootcamps and training for Saudi youth", ar: "معسكرات تدريب تقنية للشباب السعودي" }, link: "https://tuwaiq.edu.sa", hasLink: true, region: "saudi" },
+  { id: "allam", name: { en: "ALLaM (Saudi LLM)", ar: "علّام — النموذج اللغوي السعودي" }, focusArea: "ai-literacy", focus: { en: "Saudi Arabia's Arabic-first large language model", ar: "نموذج اللغة الكبير السعودي بالعربية أولاً" }, link: "#", hasLink: false, region: "saudi" },
+  { id: "humain", name: { en: "HUMAIN", ar: "هيومين" }, focusArea: "ai-ethics", focus: { en: "Saudi company advancing AI and data infrastructure", ar: "شركة سعودية تطور البنية التحتية للذكاء الاصطناعي والبيانات" }, link: "#", hasLink: false, region: "saudi" },
   ...(KNOWLEDGE_HUB_EXTRA_ORGANIZATIONS as Organization[]),
 ];
 

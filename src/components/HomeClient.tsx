@@ -3,7 +3,7 @@
 import { useTranslations } from "next-intl";
 import { useState, useEffect, useMemo } from "react";
 import { getStats } from "@/data/stats";
-import { TOOLS } from "@/data/tools";
+import { TOOLS, toolLabel } from "@/data/tools";
 import { ACTIVITIES } from "@/data/activities";
 
 /* ── IBM Carbon Design System icons ── */
@@ -635,10 +635,10 @@ export default function HomeClient({ locale }: Props) {
                     <div key={tool.id} className="bg-white rounded-2xl border border-neutral-200 p-5 hover:shadow-md hover:border-ethika-green/40 transition-all">
                       <div className="flex items-center gap-3 mb-3">
                         <div className="w-12 h-12 rounded-xl bg-emerald-50 flex items-center justify-center text-ethika-green font-bold text-lg">
-                          {tool.name.charAt(0)}
+                          {toolLabel(tool, locale).charAt(0)}
                         </div>
                         <div>
-                          <h4 className="text-base font-bold text-neutral-900">{tool.name}</h4>
+                          <h4 className="text-base font-bold text-neutral-900">{toolLabel(tool, locale)}</h4>
                           <div className="flex items-center gap-2 mt-0.5">
                             <span className={`text-[11px] px-2 py-0.5 rounded-full font-medium ${tool.free ? "bg-emerald-50 text-emerald-700" : "bg-amber-50 text-amber-700"}`}>
                               {tool.free ? (isAr ? "مجاني" : "Free") : (isAr ? "مدفوع" : "Paid")}

@@ -307,11 +307,8 @@ function professionalActivityTitles(raw, file) {
   };
 }
 
-/**
- * Hub card titles for caregivers/educators: describe what you open and what learning looks like,
- * not product branding (avoid “Day of AI • …”, bare toolkit labels, etc.).
- */
-function professionalToolTitle(raw, file) {
+/** English hub titles (caregiver-facing). */
+function toolTitleEnglish(raw, file) {
   const stem = file
     .replace(/\.md$/gi, "")
     .replace(/\.md$/gi, "")
@@ -386,24 +383,302 @@ function professionalToolTitle(raw, file) {
   return s;
 }
 
-function professionalOrgTitle(raw, file) {
+/** Arabic titles + descriptions for tool cards (matches BY_STEM keys + curated gloss). */
+const TOOL_LOCALE = {
+  ai_booklist: {
+    arTitle: "كتب للقراءة معاً عن الذكاء الاصطناعي والأخلاقيات والنمو مع التقنية",
+    arDesc:
+      "قائمة مقترحة لمناقشة الذكاء الاصطناعي والقيم الرقمية مع الأطفال والمراهقين في أجواء عائلية.",
+  },
+  planning_guide_2025: {
+    arTitle: "دفتر تخطيط سنوي لمحو أمية الذكاء الاصطناعي: محاور، وتيرة، ووحدات جاهزة للصف",
+    arDesc:
+      "يتضمن خطة طويلة المدى لربط دروس الذكاء الاصطناعي عبر العام الدراسي بما يناسب المعلمين والمنسقين.",
+  },
+  ai_literacy_15_min: {
+    arTitle: "مقدمة قصيرة للمراهقين والكبار: ما الذكاء الاصطناعي وأين يظهر في حياتنا؟",
+    arDesc: "جلسة قصيرة تشرح المفاهيم الأساسية دون مصطلحات معقدة، مناسبة للبيت أو الفصل.",
+  },
+  ai_literacy_toolkit_start_here: {
+    arTitle: "نقطة البداية لبرنامج محو أمية الذكاء الاصطناعي المنظم في المدرسة أو البيت",
+    arDesc: "ملف توجيهي لمن يبدأ أول مرة في تصميم مسار تعلّم حول الذكاء الاصطناعي.",
+  },
+  ai_literacy_toolkit_implementation_guide: {
+    arTitle: "دليل تنفيذ خطوة بخطوة لنشر محو أمية الذكاء الاصطناعي بين الصفوف أو على مستوى المنطقة",
+    arDesc: "إرشادات عملية للإدارة والمعلمين لدمج الدروس والتقييم بسلاسة.",
+  },
+  ai_literacy_toolkit_families_presentation: {
+    arTitle: "عرض تقديمي وحديث موجه لأولياء الأمور أو مجتمع المدرسة حول محو أمية الذكاء الاصطناعي",
+    arDesc: "شرائح ونقاط للنقاش في أمسية للآباء حول التوقعات والأمان والاستخدام المسؤول.",
+  },
+  google_generative_ai_for_educators: {
+    arTitle: "دليل عملي للمعلمين حول أدوات الدردشة التوليدية: مهام، حدود، والنزاهة الأكاديمية",
+    arDesc: "يساعد المعلمين على دمج أدوات مثل ChatGPT في التدريس مع ضوابط واضحة.",
+  },
+  generative_ai_mit_app_inventor: {
+    arTitle: "بناء تطبيق بسيط يستدعي نموذجاً توليدياً عبر MIT App Inventor",
+    arDesc: "نشاط برمجي بالكتل يربط بين تطبيق الهاتف والذكاء الاصطناعي التوليدي خطوة بخطوة.",
+  },
+  digital_connections_interactive_series_middle_school: {
+    arTitle: "دروس الحياة الرقمية لمرحلة المتوسط من المتصفح (كومن سينس)",
+    arDesc: "سلسلة تفاعلية تغطي الصداقات، الخصوصية، والمواطنة الرقمية بلغة مناسبة للمراهقين.",
+  },
+  digital_connections_video_series_playlist: {
+    arTitle: "سلسلة فيديو عن الصداقات والإعلام والخيارات الرقمية لطلاب المتوسط",
+    arDesc: "فيديوهات قصيرة تدعم النقاش العائلي حول السلوك الآمن عبر الإنترنت.",
+  },
+  common_sense_digital_connections_hub: {
+    arTitle: "بوابة واحدة لتصفح دروس «الاتصال الرقمي» من كومن سينس وتحميل المواد",
+    arDesc: "فهرس يوجّه المعلمين والآباء إلى الدروس والأنشطة والموارد القابلة للتنزيل.",
+  },
+  boost_digital_literacy_wellbeing_families: {
+    arTitle: "أفكار وروتينات لتعزيز العادات الرقمية والرفاهية في البيت",
+    arDesc: "مقال وأنشطة مقترحة لموازنة الشاشات والنوم والتركيز العاطفي للعائلة.",
+  },
+  ai_literacy_family_playlist: {
+    arTitle: "مقاطع فيديو قصيرة للعائلات حول مفاهيم الذكاء الاصطناعي الأساسية",
+    arDesc: "قائمة تشغيل لمراجعة سريعة مع الأطفال وطرح أسئلة على مائدة الطعام.",
+  },
+  truth_tricks_day_of_ai: {
+    arTitle: "وحدة صفية حول المعلومات المضللة والإقناع والتحقق من الادعاءات حول الذكاء الاصطناعي",
+    arDesc: "تمارين على التفكير النقدي ومصادر الأخبار والتحقق من الحقائق.",
+  },
+  ecobits_explorers_microbits: {
+    arTitle: "مشاريع استشعار داخل وخارج الفصل باستخدام micro:bit (البيئة والبيانات)",
+    arDesc: "أنشطة عملية تربط بين البيئة وجمع البيانات والتبرمج للمتعلمين الصغار.",
+  },
+  "res-20251123-195957": {
+    arTitle: "تدريب نموذج صوت أو صورة صغير في المتصفح (Teachable Machine)",
+    arDesc: "تجربة يدوية لشرح كيف تتعلم الآلة من الأمثلة دون تثبيت برامج.",
+  },
+  ai_and_creative_arts: {
+    arTitle: "مجموعة دروس: أدوات الذكاء الاصطناعي والفن والموسيقى — وماذا نسأل",
+    arDesc: "يربط بين الإبداع والآلات الذكية والأسئلة الأخلاقية حول المؤلف والأصالة.",
+  },
+  ai_and_elections: {
+    arTitle: "دروس حول التزييف العميق والحملات ولماذا يهم الإعلام الآلي للديمقراطية",
+    arDesc: "قضايا موجهة للنقاش حول الثقة والمعلومات أثناء الانتخابات.",
+  },
+  ai_ethics_debate: {
+    arTitle: "مطالبات مناظرة منظمة حول العدالة والتحيز والمسؤولية وقواعد الذكاء الاصطناعي",
+    arDesc: "إطار للحوار الصفي حول القيم عند استخدام أنظمة آلية.",
+  },
+  ai_fairness_responsibly_sports: {
+    arTitle: "درس بالحالات: العدالة عندما يقيّم الذكاء الاصطناعي الأداء في الرياضة",
+    arDesc: "يستكشف سوء التصنيف والتحيز في الأنظمة التحكيمية أو الإحصائية.",
+  },
+  ai_foundations_k2: {
+    arTitle: "مقدمة للمرحلة الابتدائية المبكرة: الأنماط والبيانات والآلات الذكية",
+    arDesc: "مفاهيم بسيطة وتمثيلات ملموسة لبناء الحدس قبل الصفوف العليا.",
+  },
+  ai_foundations_middle_grades: {
+    arTitle: "نظرة عامة لمرحلة المتوسط: كيف يعمل الذكاء الاصطناعي بأمثلة يومية",
+    arDesc: "يربط بين الحياة الواقعية والخوارزميات والبيانات بلغة واضحة.",
+  },
+  ai_foundations_high_school: {
+    arTitle: "عمق لمرحلة الثانوية: الأنظمة والبيانات والحدود والأخلاقيات",
+    arDesc: "يتدرج نحو أسئلة سياسية وتقنية تناسب الطلاب الأكبر سناً.",
+  },
+  ai_surveillance_human_responsibility: {
+    arTitle: "مواد نقاش حول المراقبة والملفات الرقمية وحقوق الإنسان في عالم يحكمه الذكاء الاصطناعي",
+    arDesc: "يربط بين الخصوصية والعدالة عند اتخاذ القرار آلياً.",
+  },
+  ai_vocabulary_cards: {
+    arTitle: "بطاقات مفردات قابلة للطباعة لمفاهيم الذكاء الاصطناعي الأساسية",
+    arDesc: "يدعم بناء لغة مشتركة بين المعلم والطالب حول النماذج والبيانات.",
+  },
+  can_machines_be_creative: {
+    arTitle: "درس فلسفي: هل يمكن للآلات أن تبدع، أم تقلّد فقط؟",
+    arDesc: "مناقشة الصدق الفني والإنسان في ظل التوليد الآلي.",
+  },
+  ethical_use_of_ai_exploration: {
+    arTitle: "أنشطة لاستكشاف الاستخدام المسؤول لأدوات الذكاء الاصطناعي في التعلم",
+    arDesc: "تمارين على الشفافية والاستشهاد بالمصادر عند استخدام المساعدات الآلية.",
+  },
+  how_are_we_quantified_by_ai: {
+    arTitle: "درس حول كيف تستنتج البيانات والنماذج الصفات والدرجات ومؤشرات المخاطر",
+    arDesc: "يفتح الحوار حول الملفات الرقمية والتمييز غير العادل.",
+  },
+  how_do_machines_create: {
+    arTitle: "شرح مبسط لكيفية توليد النماذج للصور والصوت والنص",
+    arDesc: "يعرض خطوات التدريب والتوليد دون معادلات معقدة.",
+  },
+  how_do_machines_learn_lesson: {
+    arTitle: "مفهوم تعلم الآلة: بيانات التدريب والأنماط والتعميم",
+    arDesc: "أساس لفهم أخطاء النموذج والتحيز في البيانات.",
+  },
+  how_machines_learn_coding: {
+    arTitle: "نشاط برمجي: تدريب نموذج صغير ومراقبة النتائج",
+    arDesc: "تجربة عملية لربط الكود بسلوك النموذج.",
+  },
+  how_we_teach_machines: {
+    arTitle: "مقدمة في التسميات ومجموعات البيانات وتعليم الأنظمة من الأمثلة",
+    arDesc: "يشرح دور الإنسان في «تغذية» التعلم الآلي.",
+  },
+  human_rights_and_ai: {
+    arTitle: "إطار حقوق الإنسان للقرارات الآلية والتحيز والمساءلة",
+    arDesc: "يربط بين المعايير الدولية وتجربة الأفراد مع الأنظمة الذكية.",
+  },
+  impact_ai_environment: {
+    arTitle: "أثر أنظمة الذكاء الاصطناعي الكبيرة على الطاقة والموارد — وماذا نناقش مع الطلاب",
+    arDesc: "قضايا بيئية وأخلاقية حول تدريب النماذج واستخدامها.",
+  },
+  making_sense_of_surroundings: {
+    arTitle: "البيانات وأجهزة الاستشعار: ملاحظة الأنماط في البيئة من حولنا",
+    arDesc: "أنشطة تربط بين القياس والاستنتاج والفضول العلمي.",
+  },
+  telling_climate_stories_data: {
+    arTitle: "استخدام الأدلة والرسوم البيانية لسرد قصص مناخية دقيقة (محو أمية البيانات)",
+    arDesc: "يمكن العائلات من التحقق من المعلومات البيئية عبر المصادر.",
+  },
+  the_brain_behind_the_bot: {
+    arTitle: "تشابهات بين الدماغ والشبكات العصبية — مع تجنب التبسيط الخاطئ",
+    arDesc: "يساعد على فهم حدود المقارنة بين الإنسان والآلة.",
+  },
+  the_cognitive_card_game: {
+    arTitle: "لعب بطاقات لمقارنة الإدراك البشري وأفكار تعلم الآلة",
+    arDesc: "أداة نقاش سريعة للصف أو العائلة.",
+  },
+  using_ai_for_creativity: {
+    arTitle: "مسارات إبداعية باستخدام الذكاء الاصطناعي مع الحفاظ على الألفة والأخلاقيات",
+    arDesc: "تمارين تركز على المؤلف البشري والإفصاح عن استخدام الذكاء الاصطناعي.",
+  },
+  what_is_artificial_intelligence: {
+    arTitle: "شرح مبسط: تعريفات الذكاء الاصطناعي، حدوده، وأمثلة من اليومية",
+    arDesc: "نقطة انطلاق للآباء قبل الحديث مع الأطفال.",
+  },
+  women_trailblazers_ai: {
+    arTitle: "نماذج من قيادات نسائية في الذكاء الاصطناعي وعلوم الحاسب كمصدر إلهام",
+    arDesc: "سير قصيرة تناسب الفصل أو القراءة العائلية.",
+  },
+  work_in_the_age_of_ai: {
+    arTitle: "كيف يغيّر الأتمتة والذكاء الاصطناعي المهارات والمهام ومسارات العمل",
+    arDesc: "يساعد المراهقين على ربط التعلم بالفرص المستقبلية.",
+  },
+};
+
+function toolStem(file) {
+  return file
+    .replace(/\.md$/gi, "")
+    .replace(/\.md$/gi, "")
+    .toLowerCase();
+}
+
+function bilingualToolCard(raw, file, fm) {
+  const stem = toolStem(file);
+  const nameEn = toolTitleEnglish(raw, file);
+  const descEn =
+    (fm.relevance || "").trim().slice(0, 320) ||
+    "Curated AI or digital citizenship resource you can use with guidance at home or in school.";
+  const loc = TOOL_LOCALE[stem];
+  const nameAr =
+    loc?.arTitle ?? (/[\u0600-\u06FF]/.test(nameEn) ? nameEn : `مورد تعليمي: ${nameEn.slice(0, 120)}`);
+  const descAr =
+    loc?.arDesc ??
+    `مصدر تعليمي مختار يدعم محادثات العائلة أو الصف حول الذكاء الاصطناعي والمواطنة الرقمية. ${descEn.slice(0, 200)}`;
+  return { nameEn, nameAr, descEn, descAr };
+}
+
+/** English + Arabic organization card lines (titles + blurbs). */
+function bilingualOrgCard(raw, file, fm, fromArabicMd) {
   const f = file.toLowerCase();
   let s = raw.replace(/\s+/g, " ").trim();
-  if (/[\u0600-\u06FF]{8,}/.test(s)) return s;
+  const focusEn =
+    fm.relevance.slice(0, 160) ||
+    "Official framework or policy resource for families and institutions.";
+  const genericFocusAr =
+    "إطار أو سياسة رسمية يهمّ العائلات والمؤسسات في سياق البيانات والذكاء الاصطناعي.";
 
-  if (f.includes("pdpl") && f.includes("english")) return "Personal Data Protection Law (PDPL) · English";
-  if (f.includes("children and incompetents")) return "Children's Personal Data Protection Policy";
-  if (f.includes("digital government authority")) return "Digital Government Authority · AI Ethics Principles";
-  if (f.includes("sdaia") && f.includes("generative") && f.includes("government")) {
-    return "How public institutions should use generative AI: risks, privacy, and keeping humans in the loop (national guide)";
+  if (fromArabicMd) {
+    const focusAr =
+      fm.relevance.slice(0, 160) || "إطار أو سياسة رسمية للعائلات والمؤسسات.";
+    const focusEnBody = fm.relevance.slice(0, 160) || focusEn;
+    const focusEnOut = /[\u0600-\u06FF]/.test(focusEnBody)
+      ? "Official Saudi government reference for parents and educators (Arabic document at the link)."
+      : focusEnBody;
+    return {
+      nameEn: s,
+      nameAr: s,
+      focusEn: focusEnOut,
+      focusAr,
+    };
   }
-  if (f.includes("sdaia") && f.includes("genai")) {
-    return "What families and schools should know: safe, responsible use of tools like ChatGPT (plain-language national guide)";
+
+  let nameEn = s;
+  if (f.includes("pdpl") && f.includes("english")) {
+    nameEn = "Personal Data Protection Law (PDPL) · English";
+  } else if (f.includes("children and incompetents")) {
+    nameEn = "Children's Personal Data Protection Policy";
+  } else if (f.includes("digital government authority")) {
+    nameEn = "Digital Government Authority · AI Ethics Principles";
+  } else if (f.includes("sdaia") && f.includes("generative") && f.includes("government")) {
+    nameEn =
+      "How public institutions should use generative AI: risks, privacy, and keeping humans in the loop (national guide)";
+  } else if (f.includes("sdaia") && f.includes("genai")) {
+    nameEn =
+      "What families and schools should know: safe, responsible use of tools like ChatGPT (plain-language national guide)";
+  } else if (f.includes("nsdai") || (f.includes("national strategy") && f.includes("data"))) {
+    nameEn = "National Strategy for Data & AI";
+  } else if (f.includes("sdaia") && f.includes("ai ethics") && !f.includes("gen")) {
+    nameEn = "SDAIA · AI Ethics Principles";
+  } else if (f.includes("nca.gov") || f.includes("الهيئة الوطنية")) {
+    nameEn = "National Cybersecurity Authority · Awareness";
   }
-  if (f.includes("nsdai") || (f.includes("national strategy") && f.includes("data"))) return "National Strategy for Data & AI";
-  if (f.includes("sdaia") && f.includes("ai ethics") && !f.includes("gen")) return "SDAIA · AI Ethics Principles";
-  if (f.includes("nca.gov") || f.includes("الهيئة الوطنية")) return "National Cybersecurity Authority · Awareness";
-  return s;
+
+  const ORG_AR = {
+    pdpl_en: {
+      nameAr: "نظام حماية البيانات الشخصية (النسخة الإنجليزية)",
+      focusAr:
+        "الإطار القانوني الأساسي في المملكة لمعالجة البيانات الشخصية والموافقة وحماية بيانات الأطفال.",
+    },
+    children_en: {
+      nameAr: "سياسة حماية بيانات الأطفال ومن في حكمهم",
+      focusAr: "توضح التزامات ولي الأمر والجهات تجاه بيانات القُصّر.",
+    },
+    dga: {
+      nameAr: "هيئة الحكومة الرقمية — مبادئ أخلاقيات الذكاء الاصطناعي",
+      focusAr: "تشرح مبادئ الاستخدام الأخلاقي للذكاء الاصطناعي في القطاع العام وبناء الثقة.",
+    },
+    sdaia_genai_public: {
+      nameAr: "ما ينبغي أن تعرفه العائلات والمدارس: استخدام آمن ومسؤول لأدوات مثل ChatGPT (دليل وطني مبسّط)",
+      focusAr: "إرشادات عامة رسمية حول الاستخدام الآمن والمسؤول للذكاء الاصطناعي التوليدي.",
+    },
+    sdaia_genai_gov: {
+      nameAr: "كيف تستخدم المؤسسات العامة الذكاء الاصطناعي التوليدي: المخاطر والخصوصية وبقاء الإنسان في الحلقة",
+      focusAr:
+        "يوضح مخاطر التضليل والهلوسة وخصوصية البيانات وأهمية المراجعة البشرية في القطاع الحكومي.",
+    },
+    nsdai: {
+      nameAr: "الاستراتيجية الوطنية للبيانات والذكاء الاصطناعي",
+      focusAr: "سياق وطني لاعتماد الذكاء الاصطناعي في المملكة وارتباطه برؤية 2030.",
+    },
+    sdaia_ethics: {
+      nameAr: "سدايا — مبادئ أخلاقيات الذكاء الاصطناعي",
+      focusAr:
+        "مبادئ وطنية أساسية حول العدالة والمساءلة والشفافية والخصوصية والإشراف البشري على الأنظمة الذكية.",
+    },
+  };
+
+  let key = "generic";
+  if (f.includes("pdpl") && f.includes("english")) key = "pdpl_en";
+  else if (f.includes("children and incompetents")) key = "children_en";
+  else if (f.includes("digital government authority")) key = "dga";
+  else if (f.includes("sdaia") && f.includes("generative") && f.includes("government")) key = "sdaia_genai_gov";
+  else if (f.includes("sdaia") && f.includes("genai")) key = "sdaia_genai_public";
+  else if (f.includes("nsdai") || (f.includes("national strategy") && f.includes("data"))) key = "nsdai";
+  else if (f.includes("sdaia") && f.includes("ai ethics") && !f.includes("gen")) key = "sdaia_ethics";
+
+  const ar = ORG_AR[key] ?? {
+    nameAr: "مرجع وطني أو وثيقة سياسات للعائلات والمؤسسات",
+    focusAr: /[\u0600-\u06FF]/.test(focusEn) ? focusEn : genericFocusAr,
+  };
+
+  return {
+    nameEn,
+    nameAr: ar.nameAr,
+    focusEn,
+    focusAr: ar.focusAr,
+  };
 }
 
 function escStr(s) {
@@ -437,16 +712,14 @@ for (const file of files) {
   if (cat === "org") {
     /** Arabic-source entries are Arabic-only in the UI (English hub keeps parallel EN markdown entries). */
     const fromArabicMd = /[\u0600-\u06FF]/.test(file);
+    const ob = bilingualOrgCard(fm.title, file, fm, fromArabicMd);
     orgs.push({
       id: id || `org-${orgs.length}`,
-      name: professionalOrgTitle(fm.title, file),
+      nameEn: ob.nameEn,
+      nameAr: ob.nameAr,
       focusArea: "ai-ethics",
-      focusEn:
-        fm.relevance.slice(0, 160) ||
-        "Official framework or policy resource for families and institutions.",
-      focusAr:
-        fm.relevance.slice(0, 160) ||
-        "إطار أو سياسة رسمية للعائلات والمؤسسات.",
+      focusEn: ob.focusEn,
+      focusAr: ob.focusAr,
       link: fm.url,
       hasLink: true,
       region: file.match(/[\u0600-\u06FF]/) || fm.title.match(/[\u0600-\u06FF]/) ? "saudi" : "saudi",
@@ -491,19 +764,17 @@ for (const file of files) {
   /* tool */
   const ages = inferToolAges(fm, file);
   const tcat = inferToolCategory(fm, file);
-  const desc =
-    fm.relevance.slice(0, 320) ||
-    "Curated AI or digital citizenship resource you can use with guidance at home or in school.";
+  const bt = bilingualToolCard(fm.title, file, fm);
   tools.push({
     id,
-    name: professionalToolTitle(fm.title, file),
+    nameEn: bt.nameEn,
+    nameAr: bt.nameAr,
     category: tcat,
     ageMin: ages.ageMin,
     ageMax: ages.ageMax,
     link: fm.url,
-    descEn: desc,
-    descAr:
-      "مصدر مختار حول الذكاء الاصطناعي أو المواطنة الرقمية يمكن استخدامه بتوجيه في المنزل أو المدرسة.",
+    descEn: bt.descEn,
+    descAr: bt.descAr,
     tags: fm.typeArr?.length ? fm.typeArr : ["curated"],
   });
 }
@@ -520,13 +791,13 @@ export const KNOWLEDGE_HUB_EXTRA_TOOLS = [
 for (const t of tools) {
   ts += `  {
     id: ${escStr(t.id)},
-    name: ${escStr(t.name)},
+    name: { en: ${escStr(t.nameEn)}, ar: ${escStr(t.nameAr)} },
     category: ${JSON.stringify(t.category)},
     ageMin: ${t.ageMin},
     ageMax: ${t.ageMax},
     free: true,
     ksaAvailable: true,
-    arabicSupport: ${/[\u0600-\u06FF]/.test(t.name) || t.link.includes(".gov.sa/ar") ? "true" : "false"},
+    arabicSupport: ${/[\u0600-\u06FF]/.test(t.nameAr) || t.link.includes(".gov.sa/ar") ? "true" : "false"},
     privacyLevel: "medium",
     privacyNote: {
       en: "Review the site’s terms with your child. Educational providers may collect usage data.",
@@ -574,7 +845,7 @@ for (const o of orgs) {
       : "";
   ts += `  {
     id: ${escStr(o.id)},
-    name: ${escStr(o.name)},
+    name: { en: ${escStr(o.nameEn)}, ar: ${escStr(o.nameAr)} },
     focusArea: ${escStr(o.focusArea)},
     focus: { en: ${escStr(o.focusEn)}, ar: ${escStr(o.focusAr)} },
     link: ${escStr(o.link)},

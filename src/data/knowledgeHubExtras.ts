@@ -6,13 +6,13 @@
 export const KNOWLEDGE_HUB_EXTRA_TOOLS = [
   {
     id: "ai-and-creative-arts",
-    name: "Lesson set: how AI tools intersect with making art and music—and what to question",
+    name: { en: "Lesson set: how AI tools intersect with making art and music—and what to question", ar: "مجموعة دروس: أدوات الذكاء الاصطناعي والفن والموسيقى — وماذا نسأل" },
     category: "creation",
     ageMin: 8,
     ageMax: 16,
     free: true,
     ksaAvailable: true,
-    arabicSupport: false,
+    arabicSupport: true,
     privacyLevel: "medium",
     privacyNote: {
       en: "Review the site’s terms with your child. Educational providers may collect usage data.",
@@ -20,20 +20,20 @@ export const KNOWLEDGE_HUB_EXTRA_TOOLS = [
     },
     description: {
       en: "Addresses bias in representation and identity through self-portraits, comparing how students see themselves versus how AI represents them.",
-      ar: "مصدر مختار حول الذكاء الاصطناعي أو المواطنة الرقمية يمكن استخدامه بتوجيه في المنزل أو المدرسة."
+      ar: "يربط بين الإبداع والآلات الذكية والأسئلة الأخلاقية حول المؤلف والأصالة."
     },
     link: "https://dayofai.org/units/ai-and-the-creative-arts",
     tags: ["lesson_plan","activity","ethics"]
   },
   {
     id: "ai-and-elections",
-    name: "Lesson set: deepfakes, campaigns, and why automated media matters for democracy",
+    name: { en: "Lesson set: deepfakes, campaigns, and why automated media matters for democracy", ar: "دروس حول التزييف العميق والحملات ولماذا يهم الإعلام الآلي للديمقراطية" },
     category: "learning",
     ageMin: 8,
     ageMax: 16,
     free: true,
     ksaAvailable: true,
-    arabicSupport: false,
+    arabicSupport: true,
     privacyLevel: "medium",
     privacyNote: {
       en: "Review the site’s terms with your child. Educational providers may collect usage data.",
@@ -41,20 +41,20 @@ export const KNOWLEDGE_HUB_EXTRA_TOOLS = [
     },
     description: {
       en: "Analyzes how AI influences democratic processes through deepfakes, predictive analytics, and campaign messaging. Perfect for discussing the ethical risks of misinformation and the need for responsible AI policies in society.",
-      ar: "مصدر مختار حول الذكاء الاصطناعي أو المواطنة الرقمية يمكن استخدامه بتوجيه في المنزل أو المدرسة."
+      ar: "قضايا موجهة للنقاش حول الثقة والمعلومات أثناء الانتخابات."
     },
     link: "https://dayofai.org/units/ai-and-elections",
     tags: ["lesson_plan","activity","ethics"]
   },
   {
     id: "ai-booklist",
-    name: "Books to read together about AI, ethics, and growing up with tech",
+    name: { en: "Books to read together about AI, ethics, and growing up with tech", ar: "كتب للقراءة معاً عن الذكاء الاصطناعي والأخلاقيات والنمو مع التقنية" },
     category: "learning",
     ageMin: 8,
     ageMax: 16,
     free: true,
     ksaAvailable: true,
-    arabicSupport: false,
+    arabicSupport: true,
     privacyLevel: "medium",
     privacyNote: {
       en: "Review the site’s terms with your child. Educational providers may collect usage data.",
@@ -62,20 +62,20 @@ export const KNOWLEDGE_HUB_EXTRA_TOOLS = [
     },
     description: {
       en: "Curated selection of books to introduce AI concepts through storytelling across all grade levels from early childhood to late adolescence.",
-      ar: "مصدر مختار حول الذكاء الاصطناعي أو المواطنة الرقمية يمكن استخدامه بتوجيه في المنزل أو المدرسة."
+      ar: "قائمة مقترحة لمناقشة الذكاء الاصطناعي والقيم الرقمية مع الأطفال والمراهقين في أجواء عائلية."
     },
     link: "https://dayofai.org/units/ai-booklist",
     tags: ["resource_list","reading_guide","bibliography"]
   },
   {
     id: "ai-ethics-debate",
-    name: "Structured debate prompts on fairness, bias, responsibility, and rules for AI",
+    name: { en: "Structured debate prompts on fairness, bias, responsibility, and rules for AI", ar: "مطالبات مناظرة منظمة حول العدالة والتحيز والمسؤولية وقواعد الذكاء الاصطناعي" },
     category: "learning",
     ageMin: 8,
     ageMax: 16,
     free: true,
     ksaAvailable: true,
-    arabicSupport: false,
+    arabicSupport: true,
     privacyLevel: "medium",
     privacyNote: {
       en: "Review the site’s terms with your child. Educational providers may collect usage data.",
@@ -83,20 +83,20 @@ export const KNOWLEDGE_HUB_EXTRA_TOOLS = [
     },
     description: {
       en: "Uses a structured debate to explore real-world dilemmas like facial recognition in schools and data privacy. It forces students to think as different stakeholders (tech companies, governments, users), fostering empathy and complex ethical reasoning.",
-      ar: "مصدر مختار حول الذكاء الاصطناعي أو المواطنة الرقمية يمكن استخدامه بتوجيه في المنزل أو المدرسة."
+      ar: "إطار للحوار الصفي حول القيم عند استخدام أنظمة آلية."
     },
     link: "https://dayofai.org/units/ai-ethics-debate",
     tags: ["lesson_plan","activity","debate"]
   },
   {
     id: "ai-fairness-responsibly-sports",
-    name: "Case-based lesson on fairness when AI scores, ranks, or officiates in sports",
+    name: { en: "Case-based lesson on fairness when AI scores, ranks, or officiates in sports", ar: "درس بالحالات: العدالة عندما يقيّم الذكاء الاصطناعي الأداء في الرياضة" },
     category: "learning",
     ageMin: 8,
     ageMax: 16,
     free: true,
     ksaAvailable: true,
-    arabicSupport: false,
+    arabicSupport: true,
     privacyLevel: "medium",
     privacyNote: {
       en: "Review the site’s terms with your child. Educational providers may collect usage data.",
@@ -104,20 +104,20 @@ export const KNOWLEDGE_HUB_EXTRA_TOOLS = [
     },
     description: {
       en: "Analyzes how AI makes decisions in sports (officiating, injuries, coaching) and where human judgment must remain central. Perfect for discussing fairness and bias in a high-interest context.",
-      ar: "مصدر مختار حول الذكاء الاصطناعي أو المواطنة الرقمية يمكن استخدامه بتوجيه في المنزل أو المدرسة."
+      ar: "يستكشف سوء التصنيف والتحيز في الأنظمة التحكيمية أو الإحصائية."
     },
     link: "https://dayofai.org/units/changing-the-game-using-ai-fairly-and-responsibly-in-sports",
     tags: ["lesson_plan","activity","ethics"]
   },
   {
     id: "ai-foundations-high-school",
-    name: "High-school depth on systems, data, limits, and ethics",
+    name: { en: "High-school depth on systems, data, limits, and ethics", ar: "عمق لمرحلة الثانوية: الأنظمة والبيانات والحدود والأخلاقيات" },
     category: "learning",
     ageMin: 14,
     ageMax: 18,
     free: true,
     ksaAvailable: true,
-    arabicSupport: false,
+    arabicSupport: true,
     privacyLevel: "medium",
     privacyNote: {
       en: "Review the site’s terms with your child. Educational providers may collect usage data.",
@@ -125,20 +125,20 @@ export const KNOWLEDGE_HUB_EXTRA_TOOLS = [
     },
     description: {
       en: "Provides the technical bridge between how AI works (neural networks) and its social impact. Essential for teaching high schoolers that algorithmic bias isn't just a mistake, but a result of how data and algorithms are structured.",
-      ar: "مصدر مختار حول الذكاء الاصطناعي أو المواطنة الرقمية يمكن استخدامه بتوجيه في المنزل أو المدرسة."
+      ar: "يتدرج نحو أسئلة سياسية وتقنية تناسب الطلاب الأكبر سناً."
     },
     link: "https://dayofai.org/units/ai-foundations-for-high-school",
     tags: ["lesson_plan","foundational","unit"]
   },
   {
     id: "ai-foundations-k2",
-    name: "Early-elementary introduction to patterns, data, and “smart” machines",
+    name: { en: "Early-elementary introduction to patterns, data, and “smart” machines", ar: "مقدمة للمرحلة الابتدائية المبكرة: الأنماط والبيانات والآلات الذكية" },
     category: "learning",
     ageMin: 8,
     ageMax: 16,
     free: true,
     ksaAvailable: true,
-    arabicSupport: false,
+    arabicSupport: true,
     privacyLevel: "medium",
     privacyNote: {
       en: "Review the site’s terms with your child. Educational providers may collect usage data.",
@@ -146,20 +146,20 @@ export const KNOWLEDGE_HUB_EXTRA_TOOLS = [
     },
     description: {
       en: "Foundational unit for the youngest students to understand the difference between human and machine intelligence.",
-      ar: "مصدر مختار حول الذكاء الاصطناعي أو المواطنة الرقمية يمكن استخدامه بتوجيه في المنزل أو المدرسة."
+      ar: "مفاهيم بسيطة وتمثيلات ملموسة لبناء الحدس قبل الصفوف العليا."
     },
     link: "https://dayofai.org/units/ai-foundations-grades-k-2-ages-5-7",
     tags: ["curriculum","lesson_plan","foundational"]
   },
   {
     id: "ai-foundations-middle-grades",
-    name: "Middle-grades overview of how AI works with everyday examples",
+    name: { en: "Middle-grades overview of how AI works with everyday examples", ar: "نظرة عامة لمرحلة المتوسط: كيف يعمل الذكاء الاصطناعي بأمثلة يومية" },
     category: "learning",
     ageMin: 10,
     ageMax: 15,
     free: true,
     ksaAvailable: true,
-    arabicSupport: false,
+    arabicSupport: true,
     privacyLevel: "medium",
     privacyNote: {
       en: "Review the site’s terms with your child. Educational providers may collect usage data.",
@@ -167,20 +167,20 @@ export const KNOWLEDGE_HUB_EXTRA_TOOLS = [
     },
     description: {
       en: "Provides a deep dive into how AI systems perceive and reason. Essential for Ethika to explain that AI doesn't 'think' like a human, but processes data through specific logic gates, which is where bias can be introduced.",
-      ar: "مصدر مختار حول الذكاء الاصطناعي أو المواطنة الرقمية يمكن استخدامه بتوجيه في المنزل أو المدرسة."
+      ar: "يربط بين الحياة الواقعية والخوارزميات والبيانات بلغة واضحة."
     },
     link: "https://dayofai.org/units/ai-foundations-for-middle-grades",
     tags: ["lesson_plan","foundational","unit"]
   },
   {
     id: "ai-literacy-15-min",
-    name: "Quick primer for teens and adults: what AI is and where it shows up",
+    name: { en: "Quick primer for teens and adults: what AI is and where it shows up", ar: "مقدمة قصيرة للمراهقين والكبار: ما الذكاء الاصطناعي وأين يظهر في حياتنا؟" },
     category: "learning",
     ageMin: 8,
     ageMax: 16,
     free: true,
     ksaAvailable: true,
-    arabicSupport: false,
+    arabicSupport: true,
     privacyLevel: "medium",
     privacyNote: {
       en: "Review the site’s terms with your child. Educational providers may collect usage data.",
@@ -188,20 +188,20 @@ export const KNOWLEDGE_HUB_EXTRA_TOOLS = [
     },
     description: {
       en: "Quick, flexible activities to build curiosity and responsible digital citizenship without requiring extensive prep time.",
-      ar: "مصدر مختار حول الذكاء الاصطناعي أو المواطنة الرقمية يمكن استخدامه بتوجيه في المنزل أو المدرسة."
+      ar: "جلسة قصيرة تشرح المفاهيم الأساسية دون مصطلحات معقدة، مناسبة للبيت أو الفصل."
     },
     link: "https://dayofai.org/units/ai-literacy-in-15-minutes-or-less",
     tags: ["lesson_plan","warm_up","activity"]
   },
   {
     id: "ai-literacy-family-playlist",
-    name: "Short videos for families on core AI ideas and dinner-table prompts",
+    name: { en: "Short videos for families on core AI ideas and dinner-table prompts", ar: "مقاطع فيديو قصيرة للعائلات حول مفاهيم الذكاء الاصطناعي الأساسية" },
     category: "learning",
     ageMin: 8,
     ageMax: 16,
     free: true,
     ksaAvailable: true,
-    arabicSupport: false,
+    arabicSupport: true,
     privacyLevel: "medium",
     privacyNote: {
       en: "Review the site’s terms with your child. Educational providers may collect usage data.",
@@ -209,20 +209,20 @@ export const KNOWLEDGE_HUB_EXTRA_TOOLS = [
     },
     description: {
       en: "A curated video series that explains AI concepts in simple terms for families. It covers everything from what AI is to how it impacts daily life, providing a visual and accessible way to introduce AI ethics at home.",
-      ar: "مصدر مختار حول الذكاء الاصطناعي أو المواطنة الرقمية يمكن استخدامه بتوجيه في المنزل أو المدرسة."
+      ar: "قائمة تشغيل لمراجعة سريعة مع الأطفال وطرح أسئلة على مائدة الطعام."
     },
     link: "https://www.youtube.com/playlist?list=PL8TjVyuBdsCnGPGStOLyW88w7cRPU_cql",
     tags: ["video_playlist","educational_media","toolkit"]
   },
   {
     id: "ai-literacy-toolkit-families-presentation",
-    name: "Slides and talking points for a parent or community night on AI literacy",
+    name: { en: "Slides and talking points for a parent or community night on AI literacy", ar: "عرض تقديمي وحديث موجه لأولياء الأمور أو مجتمع المدرسة حول محو أمية الذكاء الاصطناعي" },
     category: "learning",
     ageMin: 8,
     ageMax: 16,
     free: true,
     ksaAvailable: true,
-    arabicSupport: false,
+    arabicSupport: true,
     privacyLevel: "medium",
     privacyNote: {
       en: "Review the site’s terms with your child. Educational providers may collect usage data.",
@@ -230,20 +230,20 @@ export const KNOWLEDGE_HUB_EXTRA_TOOLS = [
     },
     description: {
       en: "This presentation defines AI literacy as the ability to understand how AI works and to think critically about its ethical and societal consequences. It provides practical tools for families to discuss AI's presence in daily life, its benefits, and its risks, such as bias and misinformation.",
-      ar: "مصدر مختار حول الذكاء الاصطناعي أو المواطنة الرقمية يمكن استخدامه بتوجيه في المنزل أو المدرسة."
+      ar: "شرائح ونقاط للنقاش في أمسية للآباء حول التوقعات والأمان والاستخدام المسؤول."
     },
     link: "https://docs.google.com/presentation/d/1f-21spAtkCg60Y8-oV3D6tbSNEPi6mVVWvP7nVLVlxk/edit",
     tags: ["presentation","toolkit","instructional_resource"]
   },
   {
     id: "ai-literacy-toolkit-implementation-guide",
-    name: "Step-by-step manual for rolling out AI literacy across grades or a district",
+    name: { en: "Step-by-step manual for rolling out AI literacy across grades or a district", ar: "دليل تنفيذ خطوة بخطوة لنشر محو أمية الذكاء الاصطناعي بين الصفوف أو على مستوى المنطقة" },
     category: "learning",
     ageMin: 8,
     ageMax: 16,
     free: true,
     ksaAvailable: true,
-    arabicSupport: false,
+    arabicSupport: true,
     privacyLevel: "medium",
     privacyNote: {
       en: "Review the site’s terms with your child. Educational providers may collect usage data.",
@@ -251,20 +251,20 @@ export const KNOWLEDGE_HUB_EXTRA_TOOLS = [
     },
     description: {
       en: "Curated AI or digital citizenship resource you can use with guidance at home or in school.",
-      ar: "مصدر مختار حول الذكاء الاصطناعي أو المواطنة الرقمية يمكن استخدامه بتوجيه في المنزل أو المدرسة."
+      ar: "إرشادات عملية للإدارة والمعلمين لدمج الدروس والتقييم بسلاسة."
     },
     link: "https://drive.google.com/file/d/1fbM9-rrHOPRGLnB4XnGTQNn_3yLXpNHs/view",
     tags: ["implementation_guide","facilitator_guide","toolkit"]
   },
   {
     id: "ai-literacy-toolkit-start-here",
-    name: "Orientation for schools and families starting a structured AI literacy effort",
+    name: { en: "Orientation for schools and families starting a structured AI literacy effort", ar: "نقطة البداية لبرنامج محو أمية الذكاء الاصطناعي المنظم في المدرسة أو البيت" },
     category: "learning",
     ageMin: 8,
     ageMax: 16,
     free: true,
     ksaAvailable: true,
-    arabicSupport: false,
+    arabicSupport: true,
     privacyLevel: "medium",
     privacyNote: {
       en: "Review the site’s terms with your child. Educational providers may collect usage data.",
@@ -272,20 +272,20 @@ export const KNOWLEDGE_HUB_EXTRA_TOOLS = [
     },
     description: {
       en: "Provides the logistical framework to bring AI literacy from the classroom to the home. It ensures that ethical AI discussions involve families through curated videos, conversation cards, and reflection activities.",
-      ar: "مصدر مختار حول الذكاء الاصطناعي أو المواطنة الرقمية يمكن استخدامه بتوجيه في المنزل أو المدرسة."
+      ar: "ملف توجيهي لمن يبدأ أول مرة في تصميم مسار تعلّم حول الذكاء الاصطناعي."
     },
     link: "https://docs.google.com/document/d/1Q0u-alSnNM8E48VVB-L1NVwJBu-2jEamskQEV8mcXzc/edit",
     tags: ["implementation_guide","toolkit","instructional_resource"]
   },
   {
     id: "ai-surveillance-human-responsibility",
-    name: "Discussion materials on surveillance, profiling, and human rights in an AI-mediated world",
+    name: { en: "Discussion materials on surveillance, profiling, and human rights in an AI-mediated world", ar: "مواد نقاش حول المراقبة والملفات الرقمية وحقوق الإنسان في عالم يحكمه الذكاء الاصطناعي" },
     category: "learning",
     ageMin: 8,
     ageMax: 16,
     free: true,
     ksaAvailable: true,
-    arabicSupport: false,
+    arabicSupport: true,
     privacyLevel: "medium",
     privacyNote: {
       en: "Review the site’s terms with your child. Educational providers may collect usage data.",
@@ -293,20 +293,20 @@ export const KNOWLEDGE_HUB_EXTRA_TOOLS = [
     },
     description: {
       en: "Directly addresses AI surveillance and the critical difference between AI predictions and human decisions. Includes a simulator to explore bias and privacy, perfect for discussing human responsibility.",
-      ar: "مصدر مختار حول الذكاء الاصطناعي أو المواطنة الرقمية يمكن استخدامه بتوجيه في المنزل أو المدرسة."
+      ar: "يربط بين الخصوصية والعدالة عند اتخاذ القرار آلياً."
     },
     link: "https://dayofai.org/units/from-data-to-decision-ai-surveillance-and-human-responsibility",
     tags: ["lesson_plan","activity","simulation"]
   },
   {
     id: "ai-vocabulary-cards",
-    name: "Printable cards for teaching core AI vocabulary in class",
+    name: { en: "Printable cards for teaching core AI vocabulary in class", ar: "بطاقات مفردات قابلة للطباعة لمفاهيم الذكاء الاصطناعي الأساسية" },
     category: "learning",
     ageMin: 8,
     ageMax: 16,
     free: true,
     ksaAvailable: true,
-    arabicSupport: false,
+    arabicSupport: true,
     privacyLevel: "medium",
     privacyNote: {
       en: "Review the site’s terms with your child. Educational providers may collect usage data.",
@@ -314,20 +314,20 @@ export const KNOWLEDGE_HUB_EXTRA_TOOLS = [
     },
     description: {
       en: "Printable or digital cards used as warm-ups or 5-15 minute lessons to reinforce key AI vocabulary with real-world examples.",
-      ar: "مصدر مختار حول الذكاء الاصطناعي أو المواطنة الرقمية يمكن استخدامه بتوجيه في المنزل أو المدرسة."
+      ar: "يدعم بناء لغة مشتركة بين المعلم والطالب حول النماذج والبيانات."
     },
     link: "https://dayofai.org/units/vocabulary-cards",
     tags: ["resource_list","glossary","educational_tool"]
   },
   {
     id: "boost-digital-literacy-wellbeing-families",
-    name: "Ideas and routines to strengthen digital habits and wellbeing at home",
+    name: { en: "Ideas and routines to strengthen digital habits and wellbeing at home", ar: "أفكار وروتينات لتعزيز العادات الرقمية والرفاهية في البيت" },
     category: "learning",
     ageMin: 8,
     ageMax: 16,
     free: true,
     ksaAvailable: true,
-    arabicSupport: false,
+    arabicSupport: true,
     privacyLevel: "medium",
     privacyNote: {
       en: "Review the site’s terms with your child. Educational providers may collect usage data.",
@@ -335,20 +335,20 @@ export const KNOWLEDGE_HUB_EXTRA_TOOLS = [
     },
     description: {
       en: "Directly addresses the common 'How do I start?' question from families. It provides curated, actionable activities that promote healthy tech habits, critical thinking, and emotional well-being in digital spaces.",
-      ar: "مصدر مختار حول الذكاء الاصطناعي أو المواطنة الرقمية يمكن استخدامه بتوجيه في المنزل أو المدرسة."
+      ar: "مقال وأنشطة مقترحة لموازنة الشاشات والنوم والتركيز العاطفي للعائلة."
     },
     link: "https://www.commonsense.org/education/articles/when-families-ask-about-activities-to-boost-digital-literacy-well-being",
     tags: ["article","family_resource","instructional_resource"]
   },
   {
     id: "can-machines-be-creative",
-    name: "Philosophy-of-AI lesson: creativity, imitation, and authorship",
+    name: { en: "Philosophy-of-AI lesson: creativity, imitation, and authorship", ar: "درس فلسفي: هل يمكن للآلات أن تبدع، أم تقلّد فقط؟" },
     category: "creation",
     ageMin: 8,
     ageMax: 16,
     free: true,
     ksaAvailable: true,
-    arabicSupport: false,
+    arabicSupport: true,
     privacyLevel: "medium",
     privacyNote: {
       en: "Review the site’s terms with your child. Educational providers may collect usage data.",
@@ -356,20 +356,20 @@ export const KNOWLEDGE_HUB_EXTRA_TOOLS = [
     },
     description: {
       en: "Explores the intersection of AI and art, questioning what it means to be 'creative' and who owns AI-generated content.",
-      ar: "مصدر مختار حول الذكاء الاصطناعي أو المواطنة الرقمية يمكن استخدامه بتوجيه في المنزل أو المدرسة."
+      ar: "مناقشة الصدق الفني والإنسان في ظل التوليد الآلي."
     },
     link: "https://dayofai.org/units/can-machines-be-creative",
     tags: ["lesson_plan","activity","ethics"]
   },
   {
     id: "common-sense-digital-connections-hub",
-    name: "One place to browse Common Sense “Digital Connections” lessons and downloads",
+    name: { en: "One place to browse Common Sense “Digital Connections” lessons and downloads", ar: "بوابة واحدة لتصفح دروس «الاتصال الرقمي» من كومن سينس وتحميل المواد" },
     category: "learning",
     ageMin: 8,
     ageMax: 16,
     free: true,
     ksaAvailable: true,
-    arabicSupport: false,
+    arabicSupport: true,
     privacyLevel: "medium",
     privacyNote: {
       en: "Review the site’s terms with your child. Educational providers may collect usage data.",
@@ -377,20 +377,20 @@ export const KNOWLEDGE_HUB_EXTRA_TOOLS = [
     },
     description: {
       en: "Provides the pedagogical framework for the Digital Connections interactive series. It offers teachers ready-to-use lesson plans that bridge the interactive experience with classroom discussion, ensuring that digital citizenship concepts are deeply integrated into student learning.",
-      ar: "مصدر مختار حول الذكاء الاصطناعي أو المواطنة الرقمية يمكن استخدامه بتوجيه في المنزل أو المدرسة."
+      ar: "فهرس يوجّه المعلمين والآباء إلى الدروس والأنشطة والموارد القابلة للتنزيل."
     },
     link: "https://www.commonsense.org/education/digital-connections",
     tags: ["educator_hub","lesson_plans","digital_citizenship"]
   },
   {
     id: "digital-connections-interactive-series-middle-school",
-    name: "Middle-school digital life lessons you can teach from the browser (Common Sense)",
+    name: { en: "Middle-school digital life lessons you can teach from the browser (Common Sense)", ar: "دروس الحياة الرقمية لمرحلة المتوسط من المتصفح (كومن سينس)" },
     category: "learning",
     ageMin: 10,
     ageMax: 15,
     free: true,
     ksaAvailable: true,
-    arabicSupport: false,
+    arabicSupport: true,
     privacyLevel: "medium",
     privacyNote: {
       en: "Review the site’s terms with your child. Educational providers may collect usage data.",
@@ -398,20 +398,20 @@ export const KNOWLEDGE_HUB_EXTRA_TOOLS = [
     },
     description: {
       en: "Provides an immersive and interactive way for middle schoolers to practice digital citizenship. By following the characters Daveed and Skylar, students make real-time decisions about technology use, fostering empathy, critical thinking, and responsible online behavior.",
-      ar: "مصدر مختار حول الذكاء الاصطناعي أو المواطنة الرقمية يمكن استخدامه بتوجيه في المنزل أو المدرسة."
+      ar: "سلسلة تفاعلية تغطي الصداقات، الخصوصية، والمواطنة الرقمية بلغة مناسبة للمراهقين."
     },
     link: "https://www.digitalconnections.org/",
     tags: ["interactive_video_series","curriculum","digital_citizenship"]
   },
   {
     id: "digital-connections-video-series-playlist",
-    name: "Video series on friendships, media, and online choices for middle schoolers",
+    name: { en: "Video series on friendships, media, and online choices for middle schoolers", ar: "سلسلة فيديو عن الصداقات والإعلام والخيارات الرقمية لطلاب المتوسط" },
     category: "learning",
     ageMin: 8,
     ageMax: 16,
     free: true,
     ksaAvailable: true,
-    arabicSupport: false,
+    arabicSupport: true,
     privacyLevel: "medium",
     privacyNote: {
       en: "Review the site’s terms with your child. Educational providers may collect usage data.",
@@ -419,20 +419,20 @@ export const KNOWLEDGE_HUB_EXTRA_TOOLS = [
     },
     description: {
       en: "A foundational video collection designed to accompany the official Common Sense Digital Citizenship Curriculum. Uses relatable storytelling (Daveed and Skylar) to address critical digital citizenship topics for middle schoolers. Covers ethical issues such as the 24/7 news cycle, digital footprints, and online relations",
-      ar: "مصدر مختار حول الذكاء الاصطناعي أو المواطنة الرقمية يمكن استخدامه بتوجيه في المنزل أو المدرسة."
+      ar: "فيديوهات قصيرة تدعم النقاش العائلي حول السلوك الآمن عبر الإنترنت."
     },
     link: "https://www.youtube.com/playlist?list=PLxc-QYpD02mbJnlq1v46vr-ldYeeZKmPm",
     tags: ["video_playlist","digital_citizenship","curriculum_support","instructional_resource"]
   },
   {
     id: "ecobits-explorers-microbits",
-    name: "Outdoor and classroom sensing projects with micro:bit (environment and data)",
+    name: { en: "Outdoor and classroom sensing projects with micro:bit (environment and data)", ar: "مشاريع استشعار داخل وخارج الفصل باستخدام micro:bit (البيئة والبيانات)" },
     category: "coding",
     ageMin: 8,
     ageMax: 16,
     free: true,
     ksaAvailable: true,
-    arabicSupport: false,
+    arabicSupport: true,
     privacyLevel: "medium",
     privacyNote: {
       en: "Review the site’s terms with your child. Educational providers may collect usage data.",
@@ -440,20 +440,20 @@ export const KNOWLEDGE_HUB_EXTRA_TOOLS = [
     },
     description: {
       en: "Teaches students how to collect and interpret real-world data responsibly. It emphasizes the importance of data integrity and how local data collection can inform global climate action.",
-      ar: "مصدر مختار حول الذكاء الاصطناعي أو المواطنة الرقمية يمكن استخدامه بتوجيه في المنزل أو المدرسة."
+      ar: "أنشطة عملية تربط بين البيئة وجمع البيانات والتبرمج للمتعلمين الصغار."
     },
     link: "https://dayofai.org/units/ecobits-explorers-environmental-data-collection-and-analysis-using-microbits",
     tags: ["lesson_plan","activity","data_science"]
   },
   {
     id: "ethical-use-of-ai-exploration",
-    name: "Activities for exploring responsible use of AI tools in learning",
+    name: { en: "Activities for exploring responsible use of AI tools in learning", ar: "أنشطة لاستكشاف الاستخدام المسؤول لأدوات الذكاء الاصطناعي في التعلم" },
     category: "learning",
     ageMin: 8,
     ageMax: 16,
     free: true,
     ksaAvailable: true,
-    arabicSupport: false,
+    arabicSupport: true,
     privacyLevel: "medium",
     privacyNote: {
       en: "Review the site’s terms with your child. Educational providers may collect usage data.",
@@ -461,20 +461,20 @@ export const KNOWLEDGE_HUB_EXTRA_TOOLS = [
     },
     description: {
       en: "Critical unit for establishing classroom or institutional norms. It moves from theory to practice by having students create their own 'Ethical AI Guidelines', focusing on responsibility and transparency.",
-      ar: "مصدر مختار حول الذكاء الاصطناعي أو المواطنة الرقمية يمكن استخدامه بتوجيه في المنزل أو المدرسة."
+      ar: "تمارين على الشفافية والاستشهاد بالمصادر عند استخدام المساعدات الآلية."
     },
     link: "https://dayofai.org/units/ethical-use-of-ai-exploration",
     tags: ["lesson_plan","activity","ethics"]
   },
   {
     id: "generative-ai-mit-app-inventor",
-    name: "Build a simple mobile app that calls a generative model (MIT App Inventor walkthrough)",
+    name: { en: "Build a simple mobile app that calls a generative model (MIT App Inventor walkthrough)", ar: "بناء تطبيق بسيط يستدعي نموذجاً توليدياً عبر MIT App Inventor" },
     category: "coding",
     ageMin: 8,
     ageMax: 16,
     free: true,
     ksaAvailable: true,
-    arabicSupport: false,
+    arabicSupport: true,
     privacyLevel: "medium",
     privacyNote: {
       en: "Review the site’s terms with your child. Educational providers may collect usage data.",
@@ -482,20 +482,20 @@ export const KNOWLEDGE_HUB_EXTRA_TOOLS = [
     },
     description: {
       en: "Students transition from AI consumers to AI creators. By building apps with ChatGPT and DALL-E, they encounter real-world challenges in prompt engineering, bias in generated content, and responsible API usage.",
-      ar: "مصدر مختار حول الذكاء الاصطناعي أو المواطنة الرقمية يمكن استخدامه بتوجيه في المنزل أو المدرسة."
+      ar: "نشاط برمجي بالكتل يربط بين تطبيق الهاتف والذكاء الاصطناعي التوليدي خطوة بخطوة."
     },
     link: "https://dayofai.org/units/generative-ai-with-mit-app-inventor",
     tags: ["lesson_plan","activity","coding"]
   },
   {
     id: "google-generative-ai-for-educators",
-    name: "Practical classroom guide to Chat-style AI: tasks, limits, and academic integrity",
+    name: { en: "Practical classroom guide to Chat-style AI: tasks, limits, and academic integrity", ar: "دليل عملي للمعلمين حول أدوات الدردشة التوليدية: مهام، حدود، والنزاهة الأكاديمية" },
     category: "learning",
     ageMin: 8,
     ageMax: 16,
     free: true,
     ksaAvailable: true,
-    arabicSupport: false,
+    arabicSupport: true,
     privacyLevel: "medium",
     privacyNote: {
       en: "Review the site’s terms with your child. Educational providers may collect usage data.",
@@ -503,20 +503,20 @@ export const KNOWLEDGE_HUB_EXTRA_TOOLS = [
     },
     description: {
       en: "Professional development resource for teachers to master Generative AI tools (Gemini, NotebookLM). It focuses on efficiency, creative lesson enhancement, and responsible AI usage in the classroom, enabling teachers to lead AI adoption ethically.",
-      ar: "مصدر مختار حول الذكاء الاصطناعي أو المواطنة الرقمية يمكن استخدامه بتوجيه في المنزل أو المدرسة."
+      ar: "يساعد المعلمين على دمج أدوات مثل ChatGPT في التدريس مع ضوابط واضحة."
     },
     link: "https://grow.google/ai-for-educators/",
     tags: ["professional_development","course","teacher_training"]
   },
   {
     id: "how-are-we-quantified-by-ai",
-    name: "Lesson on how data and models infer traits, scores, and risk labels",
+    name: { en: "Lesson on how data and models infer traits, scores, and risk labels", ar: "درس حول كيف تستنتج البيانات والنماذج الصفات والدرجات ومؤشرات المخاطر" },
     category: "learning",
     ageMin: 8,
     ageMax: 16,
     free: true,
     ksaAvailable: true,
-    arabicSupport: false,
+    arabicSupport: true,
     privacyLevel: "medium",
     privacyNote: {
       en: "Review the site’s terms with your child. Educational providers may collect usage data.",
@@ -524,20 +524,20 @@ export const KNOWLEDGE_HUB_EXTRA_TOOLS = [
     },
     description: {
       en: "Explores the ethical implications of turning human traits into data. It helps students understand how AI classification can lead to exclusion or discrimination, focusing on the social impact of quantification.",
-      ar: "مصدر مختار حول الذكاء الاصطناعي أو المواطنة الرقمية يمكن استخدامه بتوجيه في المنزل أو المدرسة."
+      ar: "يفتح الحوار حول الملفات الرقمية والتمييز غير العادل."
     },
     link: "https://dayofai.org/units/how-are-we-quantified-by-ai",
     tags: ["lesson_plan","activity","data_ethics"]
   },
   {
     id: "how-do-machines-create",
-    name: "Explainer on how generative models produce images, audio, and text",
+    name: { en: "Explainer on how generative models produce images, audio, and text", ar: "شرح مبسط لكيفية توليد النماذج للصور والصوت والنص" },
     category: "learning",
     ageMin: 8,
     ageMax: 16,
     free: true,
     ksaAvailable: true,
-    arabicSupport: false,
+    arabicSupport: true,
     privacyLevel: "medium",
     privacyNote: {
       en: "Review the site’s terms with your child. Educational providers may collect usage data.",
@@ -545,20 +545,20 @@ export const KNOWLEDGE_HUB_EXTRA_TOOLS = [
     },
     description: {
       en: "Explains the technical difference between predictive and generative AI. It focuses on the societal and ethical impacts of deepfakes, helping students develop critical media literacy skills.",
-      ar: "مصدر مختار حول الذكاء الاصطناعي أو المواطنة الرقمية يمكن استخدامه بتوجيه في المنزل أو المدرسة."
+      ar: "يعرض خطوات التدريب والتوليد دون معادلات معقدة."
     },
     link: "https://dayofai.org/units/how-do-machines-create",
     tags: ["lesson_plan","activity","ethics"]
   },
   {
     id: "how-do-machines-learn-lesson",
-    name: "Concept lesson on training data, patterns, and generalization",
+    name: { en: "Concept lesson on training data, patterns, and generalization", ar: "مفهوم تعلم الآلة: بيانات التدريب والأنماط والتعميم" },
     category: "learning",
     ageMin: 8,
     ageMax: 16,
     free: true,
     ksaAvailable: true,
-    arabicSupport: false,
+    arabicSupport: true,
     privacyLevel: "medium",
     privacyNote: {
       en: "Review the site’s terms with your child. Educational providers may collect usage data.",
@@ -566,20 +566,20 @@ export const KNOWLEDGE_HUB_EXTRA_TOOLS = [
     },
     description: {
       en: "Explains the concept of supervised learning and how machines use data to recognize patterns and make predictions.",
-      ar: "مصدر مختار حول الذكاء الاصطناعي أو المواطنة الرقمية يمكن استخدامه بتوجيه في المنزل أو المدرسة."
+      ar: "أساس لفهم أخطاء النموذج والتحيز في البيانات."
     },
     link: "https://dayofai.org/units/how-do-machines-learn",
     tags: ["lesson_plan","activity","interactive"]
   },
   {
     id: "how-machines-learn-coding",
-    name: "Hands-on coding activity: train a small model and inspect results",
+    name: { en: "Hands-on coding activity: train a small model and inspect results", ar: "نشاط برمجي: تدريب نموذج صغير ومراقبة النتائج" },
     category: "coding",
     ageMin: 8,
     ageMax: 16,
     free: true,
     ksaAvailable: true,
-    arabicSupport: false,
+    arabicSupport: true,
     privacyLevel: "medium",
     privacyNote: {
       en: "Review the site’s terms with your child. Educational providers may collect usage data.",
@@ -587,20 +587,20 @@ export const KNOWLEDGE_HUB_EXTRA_TOOLS = [
     },
     description: {
       en: "Teaches the technical side of AI through block-based coding (Scratch), helping students build their own simple learning models.",
-      ar: "مصدر مختار حول الذكاء الاصطناعي أو المواطنة الرقمية يمكن استخدامه بتوجيه في المنزل أو المدرسة."
+      ar: "تجربة عملية لربط الكود بسلوك النموذج."
     },
     link: "https://dayofai.org/units/how-do-machines-learn-with-coding",
     tags: ["curriculum","activity","coding"]
   },
   {
     id: "how-we-teach-machines",
-    name: "Intro to labels, datasets, and teaching systems from examples",
+    name: { en: "Intro to labels, datasets, and teaching systems from examples", ar: "مقدمة في التسميات ومجموعات البيانات وتعليم الأنظمة من الأمثلة" },
     category: "learning",
     ageMin: 8,
     ageMax: 16,
     free: true,
     ksaAvailable: true,
-    arabicSupport: false,
+    arabicSupport: true,
     privacyLevel: "medium",
     privacyNote: {
       en: "Review the site’s terms with your child. Educational providers may collect usage data.",
@@ -608,20 +608,20 @@ export const KNOWLEDGE_HUB_EXTRA_TOOLS = [
     },
     description: {
       en: "Introduces foundational AI concepts (data, patterns, algorithms) for young learners through unplugged, device-free activities.",
-      ar: "مصدر مختار حول الذكاء الاصطناعي أو المواطنة الرقمية يمكن استخدامه بتوجيه في المنزل أو المدرسة."
+      ar: "يشرح دور الإنسان في «تغذية» التعلم الآلي."
     },
     link: "https://dayofai.org/units/how-we-teach-machines",
     tags: ["lesson_plan","activity","hands_on"]
   },
   {
     id: "human-rights-and-ai",
-    name: "Human-rights framing for automated decisions, bias, and accountability",
+    name: { en: "Human-rights framing for automated decisions, bias, and accountability", ar: "إطار حقوق الإنسان للقرارات الآلية والتحيز والمساءلة" },
     category: "learning",
     ageMin: 8,
     ageMax: 16,
     free: true,
     ksaAvailable: true,
-    arabicSupport: false,
+    arabicSupport: true,
     privacyLevel: "medium",
     privacyNote: {
       en: "Review the site’s terms with your child. Educational providers may collect usage data.",
@@ -629,20 +629,20 @@ export const KNOWLEDGE_HUB_EXTRA_TOOLS = [
     },
     description: {
       en: "Directly aligns with Ethika's mission by connecting AI ethics to fundamental human rights. It uses UNESCO principles to evaluate AI impacts on privacy, safety, and equality, culminating in a student-led advocacy project.",
-      ar: "مصدر مختار حول الذكاء الاصطناعي أو المواطنة الرقمية يمكن استخدامه بتوجيه في المنزل أو المدرسة."
+      ar: "يربط بين المعايير الدولية وتجربة الأفراد مع الأنظمة الذكية."
     },
     link: "https://dayofai.org/units/human-rights-and-artificial-intelligence",
     tags: ["lesson_plan","activity","project"]
   },
   {
     id: "impact-ai-environment",
-    name: "How large AI systems use energy and materials—and what to discuss with students",
+    name: { en: "How large AI systems use energy and materials—and what to discuss with students", ar: "أثر أنظمة الذكاء الاصطناعي الكبيرة على الطاقة والموارد — وماذا نناقش مع الطلاب" },
     category: "learning",
     ageMin: 8,
     ageMax: 16,
     free: true,
     ksaAvailable: true,
-    arabicSupport: false,
+    arabicSupport: true,
     privacyLevel: "medium",
     privacyNote: {
       en: "Review the site’s terms with your child. Educational providers may collect usage data.",
@@ -650,20 +650,20 @@ export const KNOWLEDGE_HUB_EXTRA_TOOLS = [
     },
     description: {
       en: "Explores the dual nature of AI in environmental contexts: its role in climate solutions versus its massive energy consumption and e-waste production. Crucial for a holistic ethical perspective on technology.",
-      ar: "مصدر مختار حول الذكاء الاصطناعي أو المواطنة الرقمية يمكن استخدامه بتوجيه في المنزل أو المدرسة."
+      ar: "قضايا بيئية وأخلاقية حول تدريب النماذج واستخدامها."
     },
     link: "https://dayofai.org/units/the-impact-of-ai-on-the-environment",
     tags: ["lesson_plan","activity","ethics"]
   },
   {
     id: "making-sense-of-surroundings",
-    name: "Data and sensors: noticing patterns in the environment around you",
+    name: { en: "Data and sensors: noticing patterns in the environment around you", ar: "البيانات وأجهزة الاستشعار: ملاحظة الأنماط في البيئة من حولنا" },
     category: "learning",
     ageMin: 8,
     ageMax: 16,
     free: true,
     ksaAvailable: true,
-    arabicSupport: false,
+    arabicSupport: true,
     privacyLevel: "medium",
     privacyNote: {
       en: "Review the site’s terms with your child. Educational providers may collect usage data.",
@@ -671,20 +671,20 @@ export const KNOWLEDGE_HUB_EXTRA_TOOLS = [
     },
     description: {
       en: "Introduces foundational data literacy by connecting sensory observations to global climate patterns. It teaches students how data is collected, organized, and interpreted, which is the first step in understanding algorithmic bias.",
-      ar: "مصدر مختار حول الذكاء الاصطناعي أو المواطنة الرقمية يمكن استخدامه بتوجيه في المنزل أو المدرسة."
+      ar: "أنشطة تربط بين القياس والاستنتاج والفضول العلمي."
     },
     link: "https://dayofai.org/units/making-sense-of-our-surroundings",
     tags: ["lesson_plan","activity","data_literacy"]
   },
   {
     id: "planning-guide-2025",
-    name: "Year-long AI literacy planning workbook: themes, pacing, and classroom-ready blocks",
+    name: { en: "Year-long AI literacy planning workbook: themes, pacing, and classroom-ready blocks", ar: "دفتر تخطيط سنوي لمحو أمية الذكاء الاصطناعي: محاور، وتيرة، ووحدات جاهزة للصف" },
     category: "learning",
     ageMin: 8,
     ageMax: 16,
     free: true,
     ksaAvailable: true,
-    arabicSupport: false,
+    arabicSupport: true,
     privacyLevel: "medium",
     privacyNote: {
       en: "Review the site’s terms with your child. Educational providers may collect usage data.",
@@ -692,20 +692,20 @@ export const KNOWLEDGE_HUB_EXTRA_TOOLS = [
     },
     description: {
       en: "Comprehensive workbook for planning AI literacy integration, including family communication templates and implementation checklists.",
-      ar: "مصدر مختار حول الذكاء الاصطناعي أو المواطنة الرقمية يمكن استخدامه بتوجيه في المنزل أو المدرسة."
+      ar: "يتضمن خطة طويلة المدى لربط دروس الذكاء الاصطناعي عبر العام الدراسي بما يناسب المعلمين والمنسقين."
     },
     link: "https://dayofai.org/planning-guide",
     tags: ["planning_guide","workbook","educational_resource"]
   },
   {
     id: "telling-climate-stories-data",
-    name: "Using evidence and charts to tell accurate climate stories (data literacy)",
+    name: { en: "Using evidence and charts to tell accurate climate stories (data literacy)", ar: "استخدام الأدلة والرسوم البيانية لسرد قصص مناخية دقيقة (محو أمية البيانات)" },
     category: "learning",
     ageMin: 8,
     ageMax: 16,
     free: true,
     ksaAvailable: true,
-    arabicSupport: false,
+    arabicSupport: true,
     privacyLevel: "medium",
     privacyNote: {
       en: "Review the site’s terms with your child. Educational providers may collect usage data.",
@@ -713,20 +713,20 @@ export const KNOWLEDGE_HUB_EXTRA_TOOLS = [
     },
     description: {
       en: "Teaches students how to humanize raw data. It moves beyond technical analysis to ethical communication, showing how data can be used to tell compelling, evidence-based stories about climate impact.",
-      ar: "مصدر مختار حول الذكاء الاصطناعي أو المواطنة الرقمية يمكن استخدامه بتوجيه في المنزل أو المدرسة."
+      ar: "يمكن العائلات من التحقق من المعلومات البيئية عبر المصادر."
     },
     link: "https://dayofai.org/units/telling-climate-stories-with-data",
     tags: ["lesson_plan","project","data_science"]
   },
   {
     id: "the-brain-behind-the-bot",
-    name: "Analogies between brains and neural networks—without oversimplifying wrong",
+    name: { en: "Analogies between brains and neural networks—without oversimplifying wrong", ar: "تشابهات بين الدماغ والشبكات العصبية — مع تجنب التبسيط الخاطئ" },
     category: "learning",
     ageMin: 8,
     ageMax: 16,
     free: true,
     ksaAvailable: true,
-    arabicSupport: false,
+    arabicSupport: true,
     privacyLevel: "medium",
     privacyNote: {
       en: "Review the site’s terms with your child. Educational providers may collect usage data.",
@@ -734,20 +734,20 @@ export const KNOWLEDGE_HUB_EXTRA_TOOLS = [
     },
     description: {
       en: "Perfect for introducing the youngest students to AI by comparing how their own brains learn versus how a robot 'brain' learns, establishing a foundation for human-centric AI understanding.",
-      ar: "مصدر مختار حول الذكاء الاصطناعي أو المواطنة الرقمية يمكن استخدامه بتوجيه في المنزل أو المدرسة."
+      ar: "يساعد على فهم حدود المقارنة بين الإنسان والآلة."
     },
     link: "https://dayofai.org/units/thebrainbehindthebot",
     tags: ["lesson_plan","activity","introductory"]
   },
   {
     id: "the-cognitive-card-game",
-    name: "Card prompts for comparing human cognition with machine learning ideas",
+    name: { en: "Card prompts for comparing human cognition with machine learning ideas", ar: "لعب بطاقات لمقارنة الإدراك البشري وأفكار تعلم الآلة" },
     category: "learning",
     ageMin: 8,
     ageMax: 16,
     free: true,
     ksaAvailable: true,
-    arabicSupport: false,
+    arabicSupport: true,
     privacyLevel: "medium",
     privacyNote: {
       en: "Review the site’s terms with your child. Educational providers may collect usage data.",
@@ -755,20 +755,20 @@ export const KNOWLEDGE_HUB_EXTRA_TOOLS = [
     },
     description: {
       en: "Introduces the concept of 'Cognitive Debt' versus 'Effort'. It helps students distinguish between using AI as a supportive tool and over-relying on it at the expense of their own critical thinking skills.",
-      ar: "مصدر مختار حول الذكاء الاصطناعي أو المواطنة الرقمية يمكن استخدامه بتوجيه في المنزل أو المدرسة."
+      ar: "أداة نقاش سريعة للصف أو العائلة."
     },
     link: "https://dayofai.org/units/the-cognitive-card-game",
     tags: ["activity","fast_classroom_activity","ethics"]
   },
   {
     id: "truth-tricks-day-of-ai-md",
-    name: "Classroom module on misinformation, persuasion, and how to check claims about AI",
+    name: { en: "Classroom module on misinformation, persuasion, and how to check claims about AI", ar: "وحدة صفية حول المعلومات المضللة والإقناع والتحقق من الادعاءات حول الذكاء الاصطناعي" },
     category: "learning",
     ageMin: 8,
     ageMax: 16,
     free: true,
     ksaAvailable: true,
-    arabicSupport: false,
+    arabicSupport: true,
     privacyLevel: "medium",
     privacyNote: {
       en: "Review the site’s terms with your child. Educational providers may collect usage data.",
@@ -776,20 +776,20 @@ export const KNOWLEDGE_HUB_EXTRA_TOOLS = [
     },
     description: {
       en: "Provides specific strategies to counter AI hallucinations and biases.",
-      ar: "مصدر مختار حول الذكاء الاصطناعي أو المواطنة الرقمية يمكن استخدامه بتوجيه في المنزل أو المدرسة."
+      ar: "تمارين على التفكير النقدي ومصادر الأخبار والتحقق من الحقائق."
     },
     link: "https://dayofai.org/units/truth-tricks-and-ai-learning-to-verify-information",
     tags: ["lesson_plan","activity","media_literacy"]
   },
   {
     id: "using-ai-for-creativity",
-    name: "Guided prompts for creative projects that keep authorship and ethics in view",
+    name: { en: "Guided prompts for creative projects that keep authorship and ethics in view", ar: "مسارات إبداعية باستخدام الذكاء الاصطناعي مع الحفاظ على الألفة والأخلاقيات" },
     category: "learning",
     ageMin: 8,
     ageMax: 16,
     free: true,
     ksaAvailable: true,
-    arabicSupport: false,
+    arabicSupport: true,
     privacyLevel: "medium",
     privacyNote: {
       en: "Review the site’s terms with your child. Educational providers may collect usage data.",
@@ -797,20 +797,20 @@ export const KNOWLEDGE_HUB_EXTRA_TOOLS = [
     },
     description: {
       en: "Introduces younger students to the concept of AI-assisted creativity, comparing how humans and AI think differently when generating ideas.",
-      ar: "مصدر مختار حول الذكاء الاصطناعي أو المواطنة الرقمية يمكن استخدامه بتوجيه في المنزل أو المدرسة."
+      ar: "تمارين تركز على المؤلف البشري والإفصاح عن استخدام الذكاء الاصطناعي."
     },
     link: "https://dayofai.org/units/using-ai-for-creativity",
     tags: ["lesson_plan","activity","storytelling"]
   },
   {
     id: "what-is-artificial-intelligence",
-    name: "Plain-language explainer: definitions, limits, and everyday examples",
+    name: { en: "Plain-language explainer: definitions, limits, and everyday examples", ar: "شرح مبسط: تعريفات الذكاء الاصطناعي، حدوده، وأمثلة من اليومية" },
     category: "learning",
     ageMin: 8,
     ageMax: 16,
     free: true,
     ksaAvailable: true,
-    arabicSupport: false,
+    arabicSupport: true,
     privacyLevel: "medium",
     privacyNote: {
       en: "Review the site’s terms with your child. Educational providers may collect usage data.",
@@ -818,20 +818,20 @@ export const KNOWLEDGE_HUB_EXTRA_TOOLS = [
     },
     description: {
       en: "Foundational unit that defines AI and algorithms. Crucial for Ethika as it introduces how human choices in data and algorithm design lead to optimization and bias. Distinguishes between human intelligence and machine learning.",
-      ar: "مصدر مختار حول الذكاء الاصطناعي أو المواطنة الرقمية يمكن استخدامه بتوجيه في المنزل أو المدرسة."
+      ar: "نقطة انطلاق للآباء قبل الحديث مع الأطفال."
     },
     link: "https://dayofai.org/units/what-is-artificial-intelligence",
     tags: ["curriculum","lesson_plan","foundational","activity"]
   },
   {
     id: "women-trailblazers-ai",
-    name: "Profiles of women leaders in AI and CS for classroom or home inspiration",
+    name: { en: "Profiles of women leaders in AI and CS for classroom or home inspiration", ar: "نماذج من قيادات نسائية في الذكاء الاصطناعي وعلوم الحاسب كمصدر إلهام" },
     category: "learning",
     ageMin: 8,
     ageMax: 16,
     free: true,
     ksaAvailable: true,
-    arabicSupport: false,
+    arabicSupport: true,
     privacyLevel: "medium",
     privacyNote: {
       en: "Review the site’s terms with your child. Educational providers may collect usage data.",
@@ -839,20 +839,20 @@ export const KNOWLEDGE_HUB_EXTRA_TOOLS = [
     },
     description: {
       en: "Critical for addressing the gender gap and bias in AI by highlighting the essential contributions of women to the field, fostering a more inclusive perspective.",
-      ar: "مصدر مختار حول الذكاء الاصطناعي أو المواطنة الرقمية يمكن استخدامه بتوجيه في المنزل أو المدرسة."
+      ar: "سير قصيرة تناسب الفصل أو القراءة العائلية."
     },
     link: "https://dayofai.org/units/women-trailblazers-in-ai-and-computer-science",
     tags: ["mini-unit","history","biography"]
   },
   {
     id: "work-in-the-age-of-ai",
-    name: "Overview of how automation and AI change skills, tasks, and career paths",
+    name: { en: "Overview of how automation and AI change skills, tasks, and career paths", ar: "كيف يغيّر الأتمتة والذكاء الاصطناعي المهارات والمهام ومسارات العمل" },
     category: "learning",
     ageMin: 8,
     ageMax: 16,
     free: true,
     ksaAvailable: true,
-    arabicSupport: false,
+    arabicSupport: true,
     privacyLevel: "medium",
     privacyNote: {
       en: "Review the site’s terms with your child. Educational providers may collect usage data.",
@@ -860,7 +860,7 @@ export const KNOWLEDGE_HUB_EXTRA_TOOLS = [
     },
     description: {
       en: "Analyzes how AI transforms tasks and careers, with a specific focus on ethical trade-offs and algorithmic bias in professional fields, emphasizing uniquely human skills.",
-      ar: "مصدر مختار حول الذكاء الاصطناعي أو المواطنة الرقمية يمكن استخدامه بتوجيه في المنزل أو المدرسة."
+      ar: "يساعد المراهقين على ربط التعلم بالفرص المستقبلية."
     },
     link: "https://dayofai.org/units/work-in-the-age-of-ai",
     tags: ["lesson_plan","activity","ethics"]
@@ -1263,72 +1263,72 @@ export const KNOWLEDGE_HUB_EXTRA_ACTIVITIES = [
 export const KNOWLEDGE_HUB_EXTRA_ORGANIZATIONS = [
   {
     id: "children-and-incompetents-data-protection-policy",
-    name: "Children's Personal Data Protection Policy",
+    name: { en: "Children's Personal Data Protection Policy", ar: "سياسة حماية بيانات الأطفال ومن في حكمهم" },
     focusArea: "ai-ethics",
-    focus: { en: "Specifically addresses protections for children's personal data and guardian responsibilities.", ar: "Specifically addresses protections for children's personal data and guardian responsibilities." },
+    focus: { en: "Specifically addresses protections for children's personal data and guardian responsibilities.", ar: "توضح التزامات ولي الأمر والجهات تجاه بيانات القُصّر." },
     link: "https://sdaia.gov.sa/ar/SDAIA/about/Documents/Children%20and%20Incompetents%E2%80%99%20Data%20Protection%20Policy.pdf",
     hasLink: true,
     region: "saudi"
   },
   {
     id: "digital-government-authority-ai-ethics-principles-page",
-    name: "Digital Government Authority · AI Ethics Principles",
+    name: { en: "Digital Government Authority · AI Ethics Principles", ar: "هيئة الحكومة الرقمية — مبادئ أخلاقيات الذكاء الاصطناعي" },
     focusArea: "ai-ethics",
-    focus: { en: "Explains ethical AI principles applied in Saudi public sector, reinforcing trust, accountability, and transparency.", ar: "Explains ethical AI principles applied in Saudi public sector, reinforcing trust, accountability, and transparency." },
+    focus: { en: "Explains ethical AI principles applied in Saudi public sector, reinforcing trust, accountability, and transparency.", ar: "تشرح مبادئ الاستخدام الأخلاقي للذكاء الاصطناعي في القطاع العام وبناء الثقة." },
     link: "https://dga.gov.sa/en/AI-Ethics-Principles",
     hasLink: true,
     region: "saudi"
   },
   {
     id: "personal-data-protection-law-pdpl-english-version",
-    name: "Personal Data Protection Law (PDPL) · English",
+    name: { en: "Personal Data Protection Law (PDPL) · English", ar: "نظام حماية البيانات الشخصية (النسخة الإنجليزية)" },
     focusArea: "ai-ethics",
-    focus: { en: "Core Saudi privacy law governing personal data processing, consent, and protection of children's data.", ar: "Core Saudi privacy law governing personal data processing, consent, and protection of children's data." },
+    focus: { en: "Core Saudi privacy law governing personal data processing, consent, and protection of children's data.", ar: "الإطار القانوني الأساسي في المملكة لمعالجة البيانات الشخصية والموافقة وحماية بيانات الأطفال." },
     link: "https://sdaia.gov.sa/en/SDAIA/about/Documents/Personal%20Data%20English%20V2-23April2023-%20Reviewed-.pdf",
     hasLink: true,
     region: "saudi"
   },
   {
     id: "sdaia-genai-instructions",
-    name: "What families and schools should know: safe, responsible use of tools like ChatGPT (plain-language national guide)",
+    name: { en: "What families and schools should know: safe, responsible use of tools like ChatGPT (plain-language national guide)", ar: "ما ينبغي أن تعرفه العائلات والمدارس: استخدام آمن ومسؤول لأدوات مثل ChatGPT (دليل وطني مبسّط)" },
     focusArea: "ai-ethics",
-    focus: { en: "Official public guidance explaining safe and responsible use of generative AI.", ar: "Official public guidance explaining safe and responsible use of generative AI." },
+    focus: { en: "Official public guidance explaining safe and responsible use of generative AI.", ar: "إرشادات عامة رسمية حول الاستخدام الآمن والمسؤول للذكاء الاصطناعي التوليدي." },
     link: "https://sdaia.gov.sa/en/SDAIA/about/Files/GenerativeAIPublicEN.pdf",
     hasLink: true,
     region: "saudi"
   },
   {
     id: "sdaia-ai-ethics-principles",
-    name: "SDAIA · AI Ethics Principles",
+    name: { en: "SDAIA · AI Ethics Principles", ar: "سدايا — مبادئ أخلاقيات الذكاء الاصطناعي" },
     focusArea: "ai-ethics",
-    focus: { en: "Foundational national AI ethics principles that define fairness, accountability, transparency, privacy, and human oversight in AI systems.", ar: "Foundational national AI ethics principles that define fairness, accountability, transparency, privacy, and human oversight in AI systems." },
+    focus: { en: "Foundational national AI ethics principles that define fairness, accountability, transparency, privacy, and human oversight in AI systems.", ar: "مبادئ وطنية أساسية حول العدالة والمساءلة والشفافية والخصوصية والإشراف البشري على الأنظمة الذكية." },
     link: "https://sdaia.gov.sa/en/SDAIA/about/Documents/ai-principles.pdf",
     hasLink: true,
     region: "saudi"
   },
   {
     id: "sdaia-generative-ai-guidelines-for-government",
-    name: "How public institutions should use generative AI: risks, privacy, and keeping humans in the loop (national guide)",
+    name: { en: "How public institutions should use generative AI: risks, privacy, and keeping humans in the loop (national guide)", ar: "كيف تستخدم المؤسسات العامة الذكاء الاصطناعي التوليدي: المخاطر والخصوصية وبقاء الإنسان في الحلقة" },
     focusArea: "ai-ethics",
-    focus: { en: "Explains risks of generative AI including misinformation, hallucinations, privacy risks, and the importance of human review.", ar: "Explains risks of generative AI including misinformation, hallucinations, privacy risks, and the importance of human review." },
+    focus: { en: "Explains risks of generative AI including misinformation, hallucinations, privacy risks, and the importance of human review.", ar: "يوضح مخاطر التضليل والهلوسة وخصوصية البيانات وأهمية المراجعة البشرية في القطاع الحكومي." },
     link: "https://sdaia.gov.sa/en/SDAIA/about/Files/GenAIGuidelinesForGovernmentENCompressed.pdf",
     hasLink: true,
     region: "saudi"
   },
   {
     id: "sdaia-national-strategy-for-data-ai-nsdai",
-    name: "National Strategy for Data & AI",
+    name: { en: "National Strategy for Data & AI", ar: "الاستراتيجية الوطنية للبيانات والذكاء الاصطناعي" },
     focusArea: "ai-ethics",
-    focus: { en: "Provides national context for AI adoption in Saudi Arabia and alignment with Vision 2030, useful for explaining why AI literacy is important for families.", ar: "Provides national context for AI adoption in Saudi Arabia and alignment with Vision 2030, useful for explaining why AI literacy is important for families." },
+    focus: { en: "Provides national context for AI adoption in Saudi Arabia and alignment with Vision 2030, useful for explaining why AI literacy is important for families.", ar: "سياق وطني لاعتماد الذكاء الاصطناعي في المملكة وارتباطه برؤية 2030." },
     link: "https://sdaia.gov.sa/en/SDAIA/SdaiaStrategies/Pages/NationalStrategyForDataAndAI.aspx",
     hasLink: true,
     region: "saudi"
   },
   {
     id: "src-1cyjpzi",
-    name: "المبادئ الأخلاقية للذكاء الاصطناعي",
+    name: { en: "المبادئ الأخلاقية للذكاء الاصطناعي", ar: "المبادئ الأخلاقية للذكاء الاصطناعي" },
     focusArea: "ai-ethics",
-    focus: { en: "يوضح المبادئ الوطنية للاستخدام المسؤول للذكاء الاصطناعي.", ar: "يوضح المبادئ الوطنية للاستخدام المسؤول للذكاء الاصطناعي." },
+    focus: { en: "Official Saudi government reference for parents and educators (Arabic document at the link).", ar: "يوضح المبادئ الوطنية للاستخدام المسؤول للذكاء الاصطناعي." },
     link: "https://sdaia.gov.sa/ar/SDAIA/about/Documents/ai-principles-ar.pdf",
     hasLink: true,
     region: "saudi",
@@ -1336,9 +1336,9 @@ export const KNOWLEDGE_HUB_EXTRA_ORGANIZATIONS = [
   },
   {
     id: "src-12ueoeq",
-    name: "سياسة حماية البيانات الشخصية للأطفال ومن في حكمهم",
+    name: { en: "سياسة حماية البيانات الشخصية للأطفال ومن في حكمهم", ar: "سياسة حماية البيانات الشخصية للأطفال ومن في حكمهم" },
     focusArea: "ai-ethics",
-    focus: { en: "مرجع رسمي يوضح مسؤوليات ولي الأمر في حماية بيانات الأطفال الرقمية.", ar: "مرجع رسمي يوضح مسؤوليات ولي الأمر في حماية بيانات الأطفال الرقمية." },
+    focus: { en: "Official Saudi government reference for parents and educators (Arabic document at the link).", ar: "مرجع رسمي يوضح مسؤوليات ولي الأمر في حماية بيانات الأطفال الرقمية." },
     link: "https://sdaia.gov.sa/ar/SDAIA/about/Documents/Children%20and%20Incompetents%E2%80%99%20Data%20Protection%20Policy.pdf",
     hasLink: true,
     region: "saudi",
@@ -1346,9 +1346,9 @@ export const KNOWLEDGE_HUB_EXTRA_ORGANIZATIONS = [
   },
   {
     id: "src-wndt2v",
-    name: "التوعية بالأمن السيبراني للأطفال",
+    name: { en: "التوعية بالأمن السيبراني للأطفال", ar: "التوعية بالأمن السيبراني للأطفال" },
     focusArea: "ai-ethics",
-    focus: { en: "مواد توعوية رسمية تساعد أولياء الأمور على حماية أطفالهم من المخاطر الرقمية.", ar: "مواد توعوية رسمية تساعد أولياء الأمور على حماية أطفالهم من المخاطر الرقمية." },
+    focus: { en: "Official Saudi government reference for parents and educators (Arabic document at the link).", ar: "مواد توعوية رسمية تساعد أولياء الأمور على حماية أطفالهم من المخاطر الرقمية." },
     link: "https://nca.gov.sa/ar/awareness/",
     hasLink: true,
     region: "saudi",
@@ -1356,9 +1356,9 @@ export const KNOWLEDGE_HUB_EXTRA_ORGANIZATIONS = [
   },
   {
     id: "src-1wm7vab",
-    name: "إرشادات الذكاء الاصطناعي التوليدي",
+    name: { en: "إرشادات الذكاء الاصطناعي التوليدي", ar: "إرشادات الذكاء الاصطناعي التوليدي" },
     focusArea: "ai-ethics",
-    focus: { en: "مرجع وطني يشرح مخاطر وفوائد الذكاء الاصطناعي التوليدي وكيفية استخدامه بشكل مسؤول.", ar: "مرجع وطني يشرح مخاطر وفوائد الذكاء الاصطناعي التوليدي وكيفية استخدامه بشكل مسؤول." },
+    focus: { en: "Official Saudi government reference for parents and educators (Arabic document at the link).", ar: "مرجع وطني يشرح مخاطر وفوائد الذكاء الاصطناعي التوليدي وكيفية استخدامه بشكل مسؤول." },
     link: "https://sdaia.gov.sa/ar/SDAIA/about/Files/GenerativeAIPublicAR.pdf",
     hasLink: true,
     region: "saudi",
@@ -1366,9 +1366,9 @@ export const KNOWLEDGE_HUB_EXTRA_ORGANIZATIONS = [
   },
   {
     id: "src-gasns5",
-    name: "نظام حماية البيانات الشخصية",
+    name: { en: "نظام حماية البيانات الشخصية", ar: "نظام حماية البيانات الشخصية" },
     focusArea: "ai-ethics",
-    focus: { en: "الإطار القانوني الرسمي لحماية البيانات الشخصية داخل المملكة، بما يشمل بيانات القُصّر.", ar: "الإطار القانوني الرسمي لحماية البيانات الشخصية داخل المملكة، بما يشمل بيانات القُصّر." },
+    focus: { en: "Official Saudi government reference for parents and educators (Arabic document at the link).", ar: "الإطار القانوني الرسمي لحماية البيانات الشخصية داخل المملكة، بما يشمل بيانات القُصّر." },
     link: "https://sdaia.gov.sa/ar/SDAIA/about/Documents/Personal%20Data.pdf",
     hasLink: true,
     region: "saudi",
@@ -1376,9 +1376,9 @@ export const KNOWLEDGE_HUB_EXTRA_ORGANIZATIONS = [
   },
   {
     id: "src-1au5r7w",
-    name: "التحول الرقمي في التعليم",
+    name: { en: "التحول الرقمي في التعليم", ar: "التحول الرقمي في التعليم" },
     focusArea: "ai-ethics",
-    focus: { en: "يوضح توجه وزارة التعليم في دمج التقنية والذكاء الاصطناعي في العملية التعليمية.", ar: "يوضح توجه وزارة التعليم في دمج التقنية والذكاء الاصطناعي في العملية التعليمية." },
+    focus: { en: "Official Saudi government reference for parents and educators (Arabic document at the link).", ar: "يوضح توجه وزارة التعليم في دمج التقنية والذكاء الاصطناعي في العملية التعليمية." },
     link: "https://www.moe.gov.sa/ar/aboutus/digitaltransformation",
     hasLink: true,
     region: "saudi",
@@ -1386,9 +1386,9 @@ export const KNOWLEDGE_HUB_EXTRA_ORGANIZATIONS = [
   },
   {
     id: "src-wn6yua",
-    name: "الإطار الوطني لسلامة الطفل على الإنترنت",
+    name: { en: "الإطار الوطني لسلامة الطفل على الإنترنت", ar: "الإطار الوطني لسلامة الطفل على الإنترنت" },
     focusArea: "ai-ethics",
-    focus: { en: "يوضح السياسات الوطنية لحماية الأطفال من المخاطر الرقمية.", ar: "يوضح السياسات الوطنية لحماية الأطفال من المخاطر الرقمية." },
+    focus: { en: "Official Saudi government reference for parents and educators (Arabic document at the link).", ar: "يوضح السياسات الوطنية لحماية الأطفال من المخاطر الرقمية." },
     link: "https://www.hrsd.gov.sa/ar/media-center/news/121120237",
     hasLink: true,
     region: "saudi",

@@ -3,9 +3,9 @@
 import { useTranslations } from "next-intl";
 import { useState, useMemo } from "react";
 import { ArrowLeft, Search, WarningAlt } from "@carbon/icons-react";
-import { TOOLS, TOOL_CATEGORIES, PRIVACY_LEVELS } from "@/data/tools";
+import { TOOLS, TOOL_CATEGORIES, PRIVACY_LEVELS, toolLabel } from "@/data/tools";
 import { CASES, RISK_TYPES, SENSITIVITY_LEVELS } from "@/data/cases";
-import { EXPERTS, ORGANIZATIONS, FOCUS_AREAS, organizationMatchesLocale } from "@/data/experts";
+import { EXPERTS, ORGANIZATIONS, FOCUS_AREAS, organizationMatchesLocale, organizationLabel } from "@/data/experts";
 import { ACTIVITIES, ACTIVITY_CATEGORIES } from "@/data/activities";
 import type { Activity } from "@/data/activities";
 import {
@@ -61,7 +61,14 @@ export default function ExploreClient({ locale }: Props) {
     return TOOLS.filter(tool => {
       if (searchQuery) {
         const q = searchQuery.toLowerCase();
-        if (!tool.name.toLowerCase().includes(q) && !tool.description.en.toLowerCase().includes(q) && !tool.description.ar.toLowerCase().includes(q)) return false;
+        if (
+          !tool.name.en.toLowerCase().includes(q) &&
+          !tool.name.ar.toLowerCase().includes(q) &&
+          !tool.description.en.toLowerCase().includes(q) &&
+          !tool.description.ar.toLowerCase().includes(q)
+        ) {
+          return false;
+        }
       }
       if (ageFilter !== null && (tool.ageMin > ageFilter || tool.ageMax < ageFilter)) return false;
       if (costFilter === "free" && !tool.free) return false;
@@ -134,7 +141,7 @@ export default function ExploreClient({ locale }: Props) {
             {/* Hero */}
             <div className="bg-gradient-to-br from-emerald-50 to-blue-50 p-8 sm:p-12 text-center">
               <HubToolGlyphHero tool={selectedTool} />
-              <h1 className="text-3xl font-bold text-neutral-900 mb-2">{selectedTool.name}</h1>
+              <h1 className="text-3xl font-bold text-neutral-900 mb-2">{toolLabel(selectedTool, locale)}</h1>
               <p className="text-base text-neutral-500">
                 {isAr ? TOOL_CATEGORIES[selectedTool.category].ar : TOOL_CATEGORIES[selectedTool.category].en}
               </p>
@@ -422,7 +429,7 @@ export default function ExploreClient({ locale }: Props) {
                     <div className="flex items-center gap-3 mb-3">
                       <HubToolGlyph tool={tool} />
                       <div className="min-w-0">
-                        <h3 className="text-base font-bold text-neutral-900 group-hover:text-ethika-green transition-colors">{tool.name}</h3>
+                        <h3 className="text-base font-bold text-neutral-900 group-hover:text-ethika-green transition-colors">{toolLabel(tool, locale)}</h3>
                         <p className="text-xs text-neutral-500">{isAr ? TOOL_CATEGORIES[tool.category].ar : TOOL_CATEGORIES[tool.category].en}</p>
                       </div>
                     </div>
@@ -539,7 +546,7 @@ export default function ExploreClient({ locale }: Props) {
                             <div className="flex items-start gap-3 min-w-0">
                               <HubOrgGlyph org={org} />
                               <div className="min-w-0">
-                                <h3 className="text-sm font-bold text-neutral-900">{org.name}</h3>
+                                <h3 className="text-sm font-bold text-neutral-900">{organizationLabel(org, locale)}</h3>
                                 <p className="text-sm text-neutral-500 mt-1">{isAr ? org.focus.ar : org.focus.en}</p>
                               </div>
                             </div>
