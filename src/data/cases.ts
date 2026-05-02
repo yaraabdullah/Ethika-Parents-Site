@@ -13,24 +13,6 @@ export type CaseStudy = {
 
 export const CASES: CaseStudy[] = [
   {
-    id: "taylor-swift-deepfakes",
-    riskType: "deepfake",
-    title: {
-      en: "AI-Generated Images of Taylor Swift Go Viral",
-      ar: "صور مولدة بالذكاء الاصطناعي لتايلور سويفت تنتشر"
-    },
-    summary: {
-      en: "In January 2024, AI-generated explicit images of Taylor Swift went viral on X (Twitter), reaching tens of millions of views before platforms removed them. The incident highlighted how deepfake technology — once requiring technical expertise — is now accessible to anyone. The same tools are used against ordinary people, including minors.",
-      ar: "في يناير 2024، انتشرت صور صريحة مولدة بالذكاء الاصطناعي لتايلور سويفت على X (تويتر)، ووصلت لعشرات الملايين من المشاهدات قبل أن تزيلها المنصات. الحادثة سلطت الضوء على أن تقنية التزييف العميق — التي كانت تتطلب خبرة تقنية — أصبحت متاحة للجميع. نفس الأدوات تُستخدم ضد أشخاص عاديين، بما فيهم القاصرين."
-    },
-    source: "BBC News",
-    sourceUrl: "https://www.bbc.com/news/technology-68110476",
-    year: 2024,
-    sensitivity: "high",
-    ageRelevance: ["10-13", "14-16"],
-    tags: ["deepfake", "social-media", "celebrity", "image-generation"]
-  },
-  {
     id: "spain-school-deepfakes",
     riskType: "deepfake",
     title: {

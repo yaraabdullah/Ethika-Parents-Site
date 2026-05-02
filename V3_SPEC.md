@@ -170,7 +170,6 @@ All external links in the toolkit are real, validated URLs:
 - ChatGPT: https://chat.openai.com
 - MIT App Inventor: https://appinventor.mit.edu
 - Day of AI: https://dayofai.org
-- BBC News case: https://www.bbc.com/news/technology-68110476
 - Reuters case: https://www.reuters.com/technology/spain-school-deepfakes-2023-09-22/
 - CNN case: https://www.cnn.com/2023/04/29/us/ai-scam-calls-kidnapping-audio
 - SCMP case: https://www.scmp.com/news/hong-kong/law-and-crime/article/3250851/
