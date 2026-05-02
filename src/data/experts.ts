@@ -1,3 +1,5 @@
+import { KNOWLEDGE_HUB_EXTRA_ORGANIZATIONS } from "./knowledgeHubExtras";
+
 export type Expert = {
   id: string;
   name: string;
@@ -139,7 +141,16 @@ export type Organization = {
   link: string;
   hasLink: boolean;
   region: "international" | "saudi" | "academic";
+  /** When set, card appears only in these locales (e.g. Arabic-source policy links). */
+  locales?: ("en" | "ar")[];
 };
+
+/** Hub / stats: hide org rows that are not meant for the active locale. */
+export function organizationMatchesLocale(org: Organization, locale: string): boolean {
+  if (!org.locales?.length) return true;
+  const key = locale === "ar" ? "ar" : "en";
+  return org.locales.includes(key);
+}
 
 export const ORGANIZATIONS: Organization[] = [
   { id: "unicef", name: "UNICEF Policy Guidance on AI for Children", focusArea: "ai-ethics", focus: { en: "Child rights framework for AI policy", ar: "إطار حقوق الطفل لسياسة الذكاء الاصطناعي" }, link: "https://www.unicef.org/globalinsight/featured-projects/ai-children", hasLink: true, region: "international" },
@@ -156,6 +167,7 @@ export const ORGANIZATIONS: Organization[] = [
   { id: "tuwaiq", name: "Tuwaiq Academy", focusArea: "ai-literacy", focus: { en: "Tech bootcamps and training for Saudi youth", ar: "معسكرات تدريب تقنية للشباب السعودي" }, link: "https://tuwaiq.edu.sa", hasLink: true, region: "saudi" },
   { id: "allam", name: "ALLaM (Saudi LLM)", focusArea: "ai-literacy", focus: { en: "Saudi Arabia's Arabic-first large language model", ar: "نموذج اللغة الكبير السعودي بالعربية أولاً" }, link: "#", hasLink: false, region: "saudi" },
   { id: "humain", name: "HUMAIN", focusArea: "ai-ethics", focus: { en: "Saudi company advancing AI and data infrastructure", ar: "شركة سعودية تطور البنية التحتية للذكاء الاصطناعي والبيانات" }, link: "#", hasLink: false, region: "saudi" },
+  ...(KNOWLEDGE_HUB_EXTRA_ORGANIZATIONS as Organization[]),
 ];
 
 export const FOCUS_AREAS = {

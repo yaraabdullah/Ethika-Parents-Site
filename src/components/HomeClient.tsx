@@ -110,7 +110,7 @@ const AGE_BANDS = ["3_5", "6_9", "10_13", "14_16"] as const;
 export default function HomeClient({ locale }: Props) {
   const t = useTranslations("home");
   const tq = useTranslations("questionnaire");
-  const stats = getStats();
+  const stats = getStats(locale);
   const isAr = locale === "ar";
 
   // User profile state
@@ -187,10 +187,15 @@ export default function HomeClient({ locale }: Props) {
 
   const recommendedActivities = useMemo(() => {
     if (!profile || profile.childAges.length === 0) return ACTIVITIES.slice(0, 2);
-    const has6_9 = profile.childAges.includes("6_9") || profile.childAges.includes("3_5");
-    const has10_13 = profile.childAges.includes("10_13") || profile.childAges.includes("14_16");
+    const has3_5 = profile.childAges.includes("3_5");
+    const has6_9 = profile.childAges.includes("6_9") || has3_5;
+    const has10_13 = profile.childAges.includes("10_13");
+    const has14_16 = profile.childAges.includes("14_16");
     return ACTIVITIES.filter(a =>
-      (has6_9 && a.ageBand === "6-9") || (has10_13 && a.ageBand === "10-13")
+      (has3_5 && (a.ageBand === "3-5" || a.ageBand === "6-9")) ||
+      (has6_9 && !has3_5 && a.ageBand === "6-9") ||
+      (has10_13 && (a.ageBand === "10-13")) ||
+      (has14_16 && (a.ageBand === "10-13" || a.ageBand === "14-16"))
     ).slice(0, 2);
   }, [profile]);
 
@@ -670,7 +675,13 @@ export default function HomeClient({ locale }: Props) {
                       className="bg-white rounded-2xl border border-neutral-200 p-5 hover:shadow-md hover:border-emerald-200 transition-all">
                       <div className="flex items-center gap-2 mb-2">
                         <span className="text-[11px] px-2.5 py-0.5 rounded-full bg-blue-50 text-blue-700 font-medium">
-                          {act.ageBand === "6-9" ? (isAr ? "٦–٩ سنوات" : "Ages 6–9") : (isAr ? "١٠–١٣ سنة" : "Ages 10–13")}
+                          {act.ageBand === "3-5"
+                            ? (isAr ? "٣–٥ سنوات" : "Ages 3–5")
+                            : act.ageBand === "6-9"
+                              ? (isAr ? "٦–٩ سنوات" : "Ages 6–9")
+                              : act.ageBand === "10-13"
+                                ? (isAr ? "١٠–١٣ سنة" : "Ages 10–13")
+                                : (isAr ? "١٤–١٦ سنة" : "Ages 14–16")}
                         </span>
                         <span className="text-[11px] px-2.5 py-0.5 rounded-full bg-neutral-100 text-neutral-600 font-medium">
                           {act.durationMinutes} {isAr ? "دقيقة" : "min"}

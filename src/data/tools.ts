@@ -1,3 +1,5 @@
+import { KNOWLEDGE_HUB_EXTRA_TOOLS } from "./knowledgeHubExtras";
+
 export type Tool = {
   id: string;
   name: string;
@@ -162,6 +164,7 @@ export const TOOLS: Tool[] = [
     link: "https://dayofai.org",
     tags: ["curriculum", "literacy", "mit", "no-account"]
   },
+  ...(KNOWLEDGE_HUB_EXTRA_TOOLS as Tool[]),
 ];
 
 export const TOOL_CATEGORIES = {

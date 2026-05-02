@@ -1,7 +1,9 @@
+import { KNOWLEDGE_HUB_EXTRA_ACTIVITIES } from "./knowledgeHubExtras";
+
 export type Activity = {
   id: string;
   title: { en: string; ar: string };
-  ageBand: "6-9" | "10-13";
+  ageBand: "3-5" | "6-9" | "10-13" | "14-16";
   durationMinutes: number;
   toolsNeeded: { en: string; ar: string };
   openingPrompt: { en: string; ar: string };
@@ -9,6 +11,8 @@ export type Activity = {
   followUp: { en: string; ar: string };
   category: "hands-on" | "discussion" | "investigation";
   tags: string[];
+  /** Optional official slides, PDF, or article linked from curated markdown sources */
+  resourceUrl?: string;
 };
 
 export const ACTIVITIES: Activity[] = [
@@ -138,6 +142,7 @@ export const ACTIVITIES: Activity[] = [
     category: "investigation",
     tags: ["privacy", "permissions", "pdpl", "saudi-law"]
   },
+  ...(KNOWLEDGE_HUB_EXTRA_ACTIVITIES as Activity[]),
 ];
 
 export const ACTIVITY_CATEGORIES = {

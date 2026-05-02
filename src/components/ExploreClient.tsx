@@ -5,31 +5,36 @@ import { useState, useMemo } from "react";
 import { ArrowLeft, Search, WarningAlt } from "@carbon/icons-react";
 import { TOOLS, TOOL_CATEGORIES, PRIVACY_LEVELS } from "@/data/tools";
 import { CASES, RISK_TYPES, SENSITIVITY_LEVELS } from "@/data/cases";
-import { EXPERTS, ORGANIZATIONS, FOCUS_AREAS } from "@/data/experts";
+import { EXPERTS, ORGANIZATIONS, FOCUS_AREAS, organizationMatchesLocale } from "@/data/experts";
 import { ACTIVITIES, ACTIVITY_CATEGORIES } from "@/data/activities";
+import type { Activity } from "@/data/activities";
+import {
+  HubToolGlyph,
+  HubToolGlyphHero,
+  HubCaseGlyph,
+  HubCaseGlyphHero,
+  HubActivityGlyph,
+  HubActivityGlyphHero,
+  HubOrgGlyph,
+} from "@/components/HubGlyphs";
 
 type Props = { locale: string };
 type Tab = "tools" | "cases" | "experts" | "activities";
 
-/* Tool emoji/icon mapping for visual cards */
-const TOOL_ICONS: Record<string, string> = {
-  scratch: "\u{1F9E9}",
-  "quick-draw": "\u{1F3A8}",
-  "teachable-machine": "\u{1F916}",
-  khanmigo: "\u{1F393}",
-  chatgpt: "\u{1F4AC}",
-  "app-inventor": "\u{1F4F1}",
-  "day-of-ai": "\u{1F4DA}",
-};
-
-const CASE_ICONS: Record<string, string> = {
-  deepfake: "\u{1F5BC}\u{FE0F}",
-  "voice-cloning": "\u{1F399}\u{FE0F}",
-  bullying: "\u{1F6AB}",
-  "chatbot-attachment": "\u{1F916}",
-  "inappropriate-content": "\u{26A0}\u{FE0F}",
-  "data-privacy": "\u{1F512}",
-};
+function activityAgeBandLabel(band: Activity["ageBand"], t: (key: string) => string) {
+  switch (band) {
+    case "3-5":
+      return t("ages_3_5");
+    case "6-9":
+      return t("ages_6_9");
+    case "10-13":
+      return t("ages_10_13");
+    case "14-16":
+      return t("ages_14_16");
+    default:
+      return band;
+  }
+}
 
 export default function ExploreClient({ locale }: Props) {
   const t = useTranslations("explore");
@@ -100,10 +105,15 @@ export default function ExploreClient({ locale }: Props) {
     });
   }, [searchQuery, ageBandFilter]);
 
+  const visibleOrganizations = useMemo(
+    () => ORGANIZATIONS.filter((org) => organizationMatchesLocale(org, locale)),
+    [locale],
+  );
+
   const tabs: { key: Tab; count: number }[] = [
     { key: "tools", count: filteredTools.length },
     { key: "cases", count: filteredCases.length },
-    { key: "experts", count: filteredExperts.length },
+    { key: "experts", count: filteredExperts.length + visibleOrganizations.length },
     { key: "activities", count: filteredActivities.length },
   ];
 
@@ -123,7 +133,7 @@ export default function ExploreClient({ locale }: Props) {
           <div className="bg-white rounded-3xl border border-neutral-200 shadow-lg overflow-hidden">
             {/* Hero */}
             <div className="bg-gradient-to-br from-emerald-50 to-blue-50 p-8 sm:p-12 text-center">
-              <span className="text-6xl block mb-4">{TOOL_ICONS[selectedTool.id] || "\u{1F4BB}"}</span>
+              <HubToolGlyphHero tool={selectedTool} />
               <h1 className="text-3xl font-bold text-neutral-900 mb-2">{selectedTool.name}</h1>
               <p className="text-base text-neutral-500">
                 {isAr ? TOOL_CATEGORIES[selectedTool.category].ar : TOOL_CATEGORIES[selectedTool.category].en}
@@ -210,7 +220,7 @@ export default function ExploreClient({ locale }: Props) {
               selectedCase.sensitivity === "medium" ? "bg-gradient-to-br from-amber-50 to-yellow-50" :
               "bg-gradient-to-br from-blue-50 to-neutral-50"
             }`}>
-              <span className="text-6xl block mb-4">{CASE_ICONS[selectedCase.riskType] || "\u{1F4CB}"}</span>
+              <HubCaseGlyphHero riskType={selectedCase.riskType} />
               <h1 className="text-2xl sm:text-3xl font-bold text-neutral-900 mb-3">{isAr ? selectedCase.title.ar : selectedCase.title.en}</h1>
               <div className="flex items-center justify-center gap-2 flex-wrap">
                 <span className={`text-xs px-3 py-1 rounded-full font-semibold ${
@@ -254,11 +264,11 @@ export default function ExploreClient({ locale }: Props) {
 
           <div className="bg-white rounded-3xl border border-neutral-200 shadow-lg overflow-hidden">
             <div className="bg-gradient-to-br from-rose-50 to-purple-50 p-8 sm:p-12 text-center">
-              <span className="text-6xl block mb-4">{"\u{1F468}\u200D\u{1F469}\u200D\u{1F467}\u200D\u{1F466}"}</span>
+              <HubActivityGlyphHero activity={selectedActivity} />
               <h1 className="text-2xl sm:text-3xl font-bold text-neutral-900 mb-3">{isAr ? selectedActivity.title.ar : selectedActivity.title.en}</h1>
               <div className="flex items-center justify-center gap-2 flex-wrap">
                 <span className="text-xs px-3 py-1 rounded-full bg-blue-100 text-blue-700 font-semibold">
-                  {selectedActivity.ageBand === "6-9" ? t("ages_6_9") : t("ages_10_13")}
+                  {activityAgeBandLabel(selectedActivity.ageBand, t)}
                 </span>
                 <span className="text-xs px-3 py-1 rounded-full bg-neutral-100 text-neutral-600 font-medium">
                   {selectedActivity.durationMinutes} {t("minutes")}
@@ -286,6 +296,12 @@ export default function ExploreClient({ locale }: Props) {
                 <h3 className="text-base font-bold text-emerald-800 mb-2">{t("follow_up")}</h3>
                 <p className="text-base text-neutral-600">{isAr ? selectedActivity.followUp.ar : selectedActivity.followUp.en}</p>
               </div>
+              {selectedActivity.resourceUrl && (
+                <a href={selectedActivity.resourceUrl} target="_blank" rel="noopener noreferrer"
+                  className="block w-full bg-ethika-green text-white text-center font-semibold py-4 rounded-2xl text-base hover:bg-ethika-green-dark transition-all">
+                  {t("open_resource")} &rarr;
+                </a>
+              )}
             </div>
           </div>
         </div>
@@ -381,8 +397,10 @@ export default function ExploreClient({ locale }: Props) {
             {activeTab === "activities" && (
               <select value={ageBandFilter} onChange={(e) => setAgeBandFilter(e.target.value)} className={selectClass}>
                 <option value="all">{t("filter_all_ages")}</option>
+                <option value="3-5">{t("ages_3_5")}</option>
                 <option value="6-9">{t("ages_6_9")}</option>
                 <option value="10-13">{t("ages_10_13")}</option>
+                <option value="14-16">{t("ages_14_16")}</option>
               </select>
             )}
           </div>
@@ -402,8 +420,8 @@ export default function ExploreClient({ locale }: Props) {
                   <button key={tool.id} onClick={() => setExpandedTool(tool.id)}
                     className="bg-white rounded-2xl border border-neutral-200 p-5 text-left rtl:text-right hover:border-ethika-green/40 hover:shadow-md transition-all group">
                     <div className="flex items-center gap-3 mb-3">
-                      <span className="text-3xl">{TOOL_ICONS[tool.id] || "\u{1F4BB}"}</span>
-                      <div>
+                      <HubToolGlyph tool={tool} />
+                      <div className="min-w-0">
                         <h3 className="text-base font-bold text-neutral-900 group-hover:text-ethika-green transition-colors">{tool.name}</h3>
                         <p className="text-xs text-neutral-500">{isAr ? TOOL_CATEGORIES[tool.category].ar : TOOL_CATEGORIES[tool.category].en}</p>
                       </div>
@@ -450,7 +468,7 @@ export default function ExploreClient({ locale }: Props) {
                   <button key={c.id} onClick={() => setExpandedCase(c.id)}
                     className="bg-white rounded-2xl border border-neutral-200 p-5 text-left rtl:text-right hover:shadow-md hover:border-neutral-300 transition-all group">
                     <div className="flex items-center gap-3 mb-3">
-                      <span className="text-3xl">{CASE_ICONS[c.riskType] || "\u{1F4CB}"}</span>
+                      <HubCaseGlyph riskType={c.riskType} />
                       <div className="flex items-center gap-2 flex-wrap">
                         <span className={`text-[11px] px-2 py-0.5 rounded-full font-medium ${
                           c.sensitivity === "high" ? "bg-red-50 text-red-700" :
@@ -474,66 +492,77 @@ export default function ExploreClient({ locale }: Props) {
         {/* EXPERTS TAB */}
         {activeTab === "experts" && (
           <div className="animate-fade-in">
-            <h2 className="text-lg font-bold text-neutral-900 mb-4">{t("experts_heading")}</h2>
-            {filteredExperts.length === 0 ? (
-              <p className="text-base text-neutral-400 py-8 text-center">{t("no_results")}</p>
+            {filteredExperts.length === 0 && visibleOrganizations.length === 0 ? (
+              <p className="text-base text-neutral-400 py-16 text-center">{t("no_results")}</p>
             ) : (
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-5 mb-10">
-                {filteredExperts.map((expert) => (
-                  <div key={expert.id} className="bg-white rounded-2xl border border-neutral-200 p-5 hover:border-ethika-green/40 hover:shadow-md transition-all">
-                    <div className="flex items-start gap-3">
-                      <div className="w-12 h-12 bg-emerald-50 rounded-xl flex items-center justify-center flex-shrink-0 text-ethika-green font-bold text-base">
-                        {expert.name.split(" ").map(n => n[0]).join("").slice(0, 2)}
-                      </div>
-                      <div className="flex-1 min-w-0">
-                        <h3 className="text-base font-bold text-neutral-900">{expert.name}</h3>
-                        <p className="text-sm text-neutral-500 mt-0.5">{expert.affiliation}</p>
-                        <span className="inline-block text-[11px] px-2 py-0.5 rounded-full bg-neutral-100 text-neutral-600 font-medium mt-1.5">
-                          {isAr ? FOCUS_AREAS[expert.focusArea].ar : FOCUS_AREAS[expert.focusArea].en}
-                        </span>
-                      </div>
+              <>
+                {filteredExperts.length > 0 && (
+                  <>
+                    <h2 className="text-lg font-bold text-neutral-900 mb-4">{t("experts_heading")}</h2>
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-5 mb-10">
+                      {filteredExperts.map((expert) => (
+                        <div key={expert.id} className="bg-white rounded-2xl border border-neutral-200 p-5 hover:border-ethika-green/40 hover:shadow-md transition-all">
+                          <div className="flex items-start gap-3">
+                            <div className="w-12 h-12 bg-emerald-50 rounded-xl flex items-center justify-center flex-shrink-0 text-ethika-green font-bold text-base">
+                              {expert.name.split(" ").map(n => n[0]).join("").slice(0, 2)}
+                            </div>
+                            <div className="flex-1 min-w-0">
+                              <h3 className="text-base font-bold text-neutral-900">{expert.name}</h3>
+                              <p className="text-sm text-neutral-500 mt-0.5">{expert.affiliation}</p>
+                              <span className="inline-block text-[11px] px-2 py-0.5 rounded-full bg-neutral-100 text-neutral-600 font-medium mt-1.5">
+                                {isAr ? FOCUS_AREAS[expert.focusArea].ar : FOCUS_AREAS[expert.focusArea].en}
+                              </span>
+                            </div>
+                          </div>
+                          <div className="mt-3 bg-neutral-50 p-4 rounded-xl">
+                            <p className="text-[11px] font-semibold text-amber-600 mb-1">{t("why_recommended")}</p>
+                            <p className="text-sm text-neutral-600 leading-relaxed">{isAr ? expert.whyRecommended.ar : expert.whyRecommended.en}</p>
+                          </div>
+                          {expert.hasLink && (
+                            <a href={expert.link} target="_blank" rel="noopener noreferrer"
+                              className="inline-flex items-center gap-1 text-sm font-semibold text-ethika-green mt-3 hover:underline">
+                              {t("visit")} &rarr;
+                            </a>
+                          )}
+                        </div>
+                      ))}
                     </div>
-                    <div className="mt-3 bg-neutral-50 p-4 rounded-xl">
-                      <p className="text-[11px] font-semibold text-amber-600 mb-1">{t("why_recommended")}</p>
-                      <p className="text-sm text-neutral-600 leading-relaxed">{isAr ? expert.whyRecommended.ar : expert.whyRecommended.en}</p>
+                  </>
+                )}
+                {visibleOrganizations.length > 0 && (
+                  <>
+                    <h2 className="text-lg font-bold text-neutral-900 mb-4">{t("orgs_heading")}</h2>
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                      {visibleOrganizations.map((org) => (
+                        <div key={org.id} className="bg-white rounded-2xl border border-neutral-200 p-5 hover:shadow-sm transition-all">
+                          <div className="flex items-start justify-between gap-3">
+                            <div className="flex items-start gap-3 min-w-0">
+                              <HubOrgGlyph org={org} />
+                              <div className="min-w-0">
+                                <h3 className="text-sm font-bold text-neutral-900">{org.name}</h3>
+                                <p className="text-sm text-neutral-500 mt-1">{isAr ? org.focus.ar : org.focus.en}</p>
+                              </div>
+                            </div>
+                            <span className={`text-[11px] px-2 py-0.5 rounded-full font-medium shrink-0 ${
+                              org.region === "saudi" ? "bg-emerald-50 text-emerald-700" :
+                              org.region === "academic" ? "bg-blue-50 text-blue-700" : "bg-purple-50 text-purple-700"
+                            }`}>
+                              {t(`region_${org.region}`)}
+                            </span>
+                          </div>
+                          {org.hasLink && (
+                            <a href={org.link} target="_blank" rel="noopener noreferrer"
+                              className="inline-flex items-center gap-1 text-sm font-semibold text-ethika-green mt-3 hover:underline">
+                              {t("visit")} &rarr;
+                            </a>
+                          )}
+                        </div>
+                      ))}
                     </div>
-                    {expert.hasLink && (
-                      <a href={expert.link} target="_blank" rel="noopener noreferrer"
-                        className="inline-flex items-center gap-1 text-sm font-semibold text-ethika-green mt-3 hover:underline">
-                        {t("visit")} &rarr;
-                      </a>
-                    )}
-                  </div>
-                ))}
-              </div>
+                  </>
+                )}
+              </>
             )}
-
-            {/* Organizations */}
-            <h2 className="text-lg font-bold text-neutral-900 mb-4">{t("orgs_heading")}</h2>
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-              {ORGANIZATIONS.map((org) => (
-                <div key={org.id} className="bg-white rounded-2xl border border-neutral-200 p-5 hover:shadow-sm transition-all">
-                  <div className="flex items-start justify-between gap-3">
-                    <div>
-                      <h3 className="text-sm font-bold text-neutral-900">{org.name}</h3>
-                      <p className="text-sm text-neutral-500 mt-1">{isAr ? org.focus.ar : org.focus.en}</p>
-                    </div>
-                    <span className={`text-[11px] px-2 py-0.5 rounded-full font-medium shrink-0 ${
-                      org.region === "saudi" ? "bg-emerald-50 text-emerald-700" :
-                      org.region === "academic" ? "bg-blue-50 text-blue-700" : "bg-purple-50 text-purple-700"
-                    }`}>
-                      {t(`region_${org.region}`)}
-                    </span>
-                  </div>
-                  {org.hasLink && (
-                    <a href={org.link} target="_blank" rel="noopener noreferrer"
-                      className="inline-flex items-center gap-1 text-sm font-semibold text-ethika-green mt-3 hover:underline">
-                      {t("visit")} &rarr;
-                    </a>
-                  )}
-                </div>
-              ))}
-            </div>
           </div>
         )}
 
@@ -547,9 +576,12 @@ export default function ExploreClient({ locale }: Props) {
                 {filteredActivities.map((act) => (
                   <button key={act.id} onClick={() => setExpandedActivity(act.id)}
                     className="bg-white rounded-2xl border border-neutral-200 p-5 text-left rtl:text-right hover:border-ethika-green/40 hover:shadow-md transition-all group">
+                    <div className="flex gap-3">
+                      <HubActivityGlyph activity={act} />
+                      <div className="min-w-0 flex-1">
                     <div className="flex items-center gap-2 mb-2 flex-wrap">
                       <span className="text-[11px] px-2.5 py-0.5 rounded-full bg-blue-50 text-blue-700 font-medium">
-                        {act.ageBand === "6-9" ? t("ages_6_9") : t("ages_10_13")}
+                        {activityAgeBandLabel(act.ageBand, t)}
                       </span>
                       <span className="text-[11px] px-2.5 py-0.5 rounded-full bg-neutral-100 text-neutral-600 font-medium">
                         {act.durationMinutes} {t("minutes")}
@@ -563,6 +595,8 @@ export default function ExploreClient({ locale }: Props) {
                       &ldquo;{isAr ? act.openingPrompt.ar : act.openingPrompt.en}&rdquo;
                     </p>
                     <span className="mt-3 text-sm font-semibold text-ethika-green inline-block">{t("view_activity")} &rarr;</span>
+                      </div>
+                    </div>
                   </button>
                 ))}
               </div>
