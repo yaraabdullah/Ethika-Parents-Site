@@ -28,16 +28,17 @@ export function SunIcon({ size = 24, className }: P) {
   );
 }
 
-/** Moon — crescent via evenodd */
+/** Moon — crescent via mask (no evenodd artifacts) */
 export function MoonIcon({ size = 24, className }: P) {
   return (
     <svg width={size} height={size} viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden className={className}>
-      <path
-        fillRule="evenodd"
-        d="M12 3 A9 9 0 1 0 12 21 A9 9 0 1 0 12 3 Z
-           M15 5 A7 7 0 1 0 15 19 A7 7 0 1 0 15 5 Z"
-        fill="#7C3AED"
-      />
+      <defs>
+        <mask id="moon-crescent-mask">
+          <circle cx="12" cy="12" r="9" fill="white" />
+          <circle cx="16" cy="11" r="7.5" fill="black" />
+        </mask>
+      </defs>
+      <circle cx="12" cy="12" r="9" fill="#7C3AED" mask="url(#moon-crescent-mask)" />
     </svg>
   );
 }
